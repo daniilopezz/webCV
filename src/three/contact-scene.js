@@ -27,7 +27,7 @@ export class ContactScene {
     this.scene = new THREE.Scene()
 
     this.camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100)
-    this.camera.position.set(0, 0, 6)
+    this.applyViewportLayout(w)
 
     this.buildGlobe()
     this.buildRings()
@@ -125,6 +125,23 @@ export class ContactScene {
     this.scene.add(fill)
   }
 
+  applyViewportLayout(width = window.innerWidth) {
+    const isPhone = width < 640
+    const isTablet = width >= 640 && width < 1024
+
+    if (isPhone) {
+      this.camera.fov = 48
+      this.camera.position.set(0, 0, 10.4)
+    } else if (isTablet) {
+      this.camera.fov = 45
+      this.camera.position.set(0, 0, 7.2)
+    } else {
+      this.camera.fov = 45
+      this.camera.position.set(0, 0, 6)
+    }
+    this.camera.updateProjectionMatrix()
+  }
+
   listen() {
     window.addEventListener('resize', () => this.onResize(), { passive: true })
   }
@@ -134,7 +151,7 @@ export class ContactScene {
     const h = this.canvas.offsetHeight
     this.renderer.setSize(w, h)
     this.camera.aspect = w / h
-    this.camera.updateProjectionMatrix()
+    this.applyViewportLayout(window.innerWidth)
   }
 
   tick() {

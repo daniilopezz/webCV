@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroAnimations()
   initScrollAnimations()
 
-  // Three.js character — only on desktop for performance
+  // Three.js character — responsive across desktop, tablet, and phone
   const heroCanvas = document.getElementById('hero-canvas')
-  if (heroCanvas && !window.matchMedia('(max-width: 767px)').matches) {
+  if (heroCanvas) {
     new HeroCharacter(heroCanvas)
   }
 

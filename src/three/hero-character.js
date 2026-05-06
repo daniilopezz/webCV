@@ -136,6 +136,7 @@ export class HeroCharacter {
     this.canvas = canvas
     this.raf = null
     this.refs = {}     // named mesh references for animation
+    this.onResizeBound = () => this.onResize()
 
     this.init()
     this.buildLights()
@@ -166,13 +167,40 @@ export class HeroCharacter {
 
     this.scene = new THREE.Scene()
     this.stage = new THREE.Group()
-    this.stage.position.set(1.55, -0.02, 0)
-    this.stage.scale.setScalar(0.94)
     this.scene.add(this.stage)
 
     this.camera = new THREE.PerspectiveCamera(42, w / h, 0.1, 100)
-    this.camera.position.set(2.8, 3.4, 7.5)
-    this.camera.lookAt(0.6, 1.4, 0)
+    this.applyViewportLayout(w)
+  }
+
+  applyViewportLayout(width = window.innerWidth) {
+    const isPhone = width < 640
+    const isTablet = width >= 640 && width < 1024
+    const pixelRatio = isPhone ? 1.2 : isTablet ? 1.5 : 2
+
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, pixelRatio))
+
+    if (isPhone) {
+      this.stage.position.set(0.12, -0.42, 0)
+      this.stage.scale.setScalar(0.96)
+      this.camera.fov = 36
+      this.camera.position.set(0.90, 2.46, 5.25)
+      this.camera.lookAt(0.16, 1.24, 0)
+    } else if (isTablet) {
+      this.stage.position.set(-0.92, -0.16, 0)
+      this.stage.scale.setScalar(0.82)
+      this.camera.fov = 44
+      this.camera.position.set(1.20, 3.05, 7.6)
+      this.camera.lookAt(-0.44, 1.38, 0)
+    } else {
+      this.stage.position.set(1.55, -0.02, 0)
+      this.stage.scale.setScalar(0.94)
+      this.camera.fov = 42
+      this.camera.position.set(2.8, 3.4, 7.5)
+      this.camera.lookAt(0.6, 1.4, 0)
+    }
+
+    this.camera.updateProjectionMatrix()
   }
 
   /* ─── Lights ────────────────────────────────────── */
@@ -519,7 +547,7 @@ export class HeroCharacter {
 
   /* ─── Events ─────────────────────────────────────── */
   listen() {
-    window.addEventListener('resize', () => this.onResize(), { passive: true })
+    window.addEventListener('resize', this.onResizeBound, { passive: true })
   }
 
   onResize() {
@@ -527,6 +555,7 @@ export class HeroCharacter {
     const h = this.canvas.offsetHeight
     this.renderer.setSize(w, h)
     this.camera.aspect = w / h
+    this.applyViewportLayout(window.innerWidth)
     this.camera.updateProjectionMatrix()
   }
 
@@ -586,6 +615,7 @@ export class HeroCharacter {
 
   destroy() {
     cancelAnimationFrame(this.raf)
+    window.removeEventListener('resize', this.onResizeBound)
     this.renderer.dispose()
   }
 }

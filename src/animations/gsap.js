@@ -4,91 +4,104 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export function initHeroAnimations() {
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  tl.fromTo('.hero-tag',
-    { y: 16, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.7 },
-    0.2
-  )
+  if (prefersReduced) {
+    gsap.set([
+      '.hero-tag',
+      '.hero__title-line > span',
+      '.hero__description',
+      '.hero__actions',
+      '.hero__canvas',
+    ], { opacity: 1, y: 0, scale: 1, clearProps: 'transform' })
+    return
+  }
 
-  tl.fromTo('.hero__title-line > span',
-    { y: '110%', opacity: 0 },
-    { y: '0%', opacity: 1, duration: 0.85, stagger: 0.1 },
-    0.45
-  )
+  const mm = gsap.matchMedia()
 
-  tl.fromTo('.hero__description',
-    { y: 24, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.75 },
-    1.0
-  )
+  mm.add(
+    {
+      isPhone: '(max-width: 767px)',
+      isTablet: '(min-width: 768px) and (max-width: 1023px)',
+      isDesktop: '(min-width: 1024px)',
+    },
+    context => {
+      const { isPhone, isTablet } = context.conditions
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-  tl.fromTo('.hero__actions',
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.7 },
-    1.2
-  )
+      tl.fromTo('.hero-tag',
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7 },
+        0.2
+      )
 
-  tl.fromTo('.hero__scroll-indicator',
-    { opacity: 0, y: 8 },
-    { opacity: 0.5, y: 0, duration: 0.8 },
-    1.6
+      tl.fromTo('.hero__title-line > span',
+        { y: '110%', opacity: 0 },
+        { y: '0%', opacity: 1, duration: 0.85, stagger: 0.1 },
+        0.45
+      )
+
+      tl.fromTo('.hero__description',
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.75 },
+        1.0
+      )
+
+      tl.fromTo('.hero__actions',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7 },
+        1.2
+      )
+
+      tl.fromTo('.hero__canvas',
+        {
+          opacity: 0,
+          scale: isPhone ? 1.08 : isTablet ? 1.04 : 1.02,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: isPhone ? 1.0 : 1.2,
+        },
+        isPhone ? 0.9 : 0.55
+      )
+
+    }
   )
 }
 
 export function initScrollAnimations() {
-  /* ── About ── */
-  gsap.fromTo('.about-header',
-    { y: 50, opacity: 0 },
-    {
-      y: 0, opacity: 1, duration: 0.85, ease: 'power3.out',
-      scrollTrigger: { trigger: '.about', start: 'top 82%', once: true },
-    }
-  )
-
-  gsap.fromTo('.about-bio',
-    { x: -36, opacity: 0 },
-    {
-      x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: '.about__grid', start: 'top 80%', once: true },
-    }
-  )
-
-  gsap.fromTo('.about-visual',
-    { x: 36, opacity: 0 },
-    {
-      x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: '.about__grid', start: 'top 80%', once: true },
-    }
-  )
-
-  gsap.fromTo('.skill-tag',
-    { y: 18, opacity: 0 },
-    {
-      y: 0, opacity: 1, duration: 0.45, stagger: 0.05, ease: 'power3.out',
-      scrollTrigger: { trigger: '.about__skills', start: 'top 85%', once: true },
-    }
-  )
-
   /* ── Projects ── */
-  gsap.fromTo('.projects-header',
-    { y: 50, opacity: 0 },
-    {
-      y: 0, opacity: 1, duration: 0.85, ease: 'power3.out',
-      scrollTrigger: { trigger: '.projects', start: 'top 82%', once: true },
-    }
-  )
+  if (document.querySelector('.projects-header')) {
+    gsap.fromTo('.projects-header',
+      { y: 50, opacity: 0 },
+      {
+        y: 0, opacity: 1, duration: 0.85, ease: 'power3.out',
+        scrollTrigger: { trigger: '.projects', start: 'top 82%', once: true },
+      }
+    )
+  }
 
-  gsap.fromTo('.project-card',
-    { y: 56, opacity: 0 },
-    {
-      y: 0, opacity: 1, duration: 0.65, stagger: 0.1, ease: 'power3.out',
-      scrollTrigger: { trigger: '.projects__grid', start: 'top 82%', once: true },
-    }
-  )
+  const projectCards = gsap.utils.toArray('.project-card')
+  if (projectCards.length) {
+    gsap.set(projectCards, { y: 48, opacity: 0 })
+    ScrollTrigger.batch(projectCards, {
+      start: 'top 88%',
+      once: true,
+      onEnter: batch => gsap.to(batch, {
+        y: 0,
+        opacity: 1,
+        duration: 0.65,
+        stagger: 0.08,
+        ease: 'power3.out',
+        overwrite: true,
+      }),
+    })
+  }
 
   /* ── Contact ── */
+  if (!document.querySelector('.contact')) return
+
   const contactTl = gsap.timeline({
     scrollTrigger: { trigger: '.contact', start: 'top 75%', once: true },
     defaults: { ease: 'power3.out' },

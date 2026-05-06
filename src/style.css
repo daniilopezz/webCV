@@ -32,9 +32,11 @@
   --spacing-8: 8px;
   --spacing-10: 10px;
   --spacing-12: 12px;
+  --spacing-14: 14px;
   --spacing-16: 16px;
   --spacing-18: 18px;
   --spacing-20: 20px;
+  --spacing-24: 24px;
   --spacing-26: 26px;
   --spacing-28: 28px;
   --spacing-32: 32px;
@@ -725,7 +727,7 @@ button {
 }
 
 /* ─── Responsive RPG ─────────────────────────────────── */
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .rpg__layout {
     grid-template-columns: 1fr 1.3fr;
     align-items: start;
@@ -742,6 +744,7 @@ button {
   display: flex;
   align-items: center;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .hero__canvas {
@@ -750,6 +753,7 @@ button {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 0;
 }
 
 /* Gradient mask to keep left text area clean */
@@ -815,53 +819,6 @@ button {
   gap: var(--spacing-16);
   flex-wrap: wrap;
   align-items: center;
-}
-
-/* Scroll indicator */
-.hero__scroll-indicator {
-  position: absolute;
-  bottom: var(--spacing-36);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-8);
-  opacity: 0;
-}
-
-.scroll-mouse {
-  width: 22px;
-  height: 36px;
-  border: 2px solid var(--color-deep-mocha);
-  border-radius: 11px;
-  display: flex;
-  justify-content: center;
-  padding-top: 6px;
-}
-
-.scroll-mouse__dot {
-  width: 4px;
-  height: 6px;
-  background: var(--color-deep-mocha);
-  border-radius: 2px;
-  animation: scrollDot 1.4s var(--ease-smooth) infinite;
-}
-
-.hero__scroll-indicator span {
-  font-size: 10px;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-deep-mocha);
-}
-
-@keyframes scrollDot {
-  0%   { transform: translateY(0); opacity: 1; }
-  70%  { transform: translateY(10px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 0; }
 }
 
 /* ============================================================
@@ -1227,9 +1184,9 @@ button {
 }
 
 /* ============================================================
-   Responsive — Tablet (md: 768px+)
+   Responsive — Desktop & Wide Tablet
    ============================================================ */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   :root {
     --header-height: 104px;
   }
@@ -1245,19 +1202,163 @@ button {
 }
 
 /* ============================================================
-   Responsive — Mobile (max 767px)
+   Responsive — Compact Navigation
    ============================================================ */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
+  :root {
+    --header-height: 82px;
+    --container-pad: clamp(18px, 5vw, 44px);
+  }
+
+  .header__inner {
+    height: var(--header-height);
+    padding-top: var(--spacing-12);
+    padding-bottom: var(--spacing-12);
+    gap: var(--spacing-16);
+  }
+
+  .header__logo {
+    font-size: clamp(34px, 6vw, 42px);
+  }
+
   .header__nav { display: none; }
   .header__cta { display: none; }
   .header__burger { display: flex; }
   .mobile-nav { display: flex; }
 
+  .mobile-nav__link {
+    font-size: clamp(24px, 4.5vw, 32px);
+  }
+}
+
+/* ============================================================
+   Responsive — Tablet
+   ============================================================ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section {
+    padding: clamp(76px, 9vh, 116px) 0;
+  }
+
+  .hero {
+    min-height: max(760px, 100svh);
+  }
+
+  .hero__content {
+    padding: 126px var(--container-pad) 94px;
+  }
+
+  .hero__text {
+    max-width: min(540px, 58vw);
+    gap: var(--spacing-24, 24px);
+  }
+
+  .hero__title {
+    font-size: clamp(58px, 8.8vw, 76px);
+    line-height: 1.04;
+  }
+
+  .hero__description {
+    max-width: 430px;
+  }
+
+  .hero__canvas {
+    top: 0;
+    right: -10vw;
+    bottom: 0;
+    left: auto;
+    width: 82vw;
+    height: 100%;
+  }
+
   .hero__mask {
     background: linear-gradient(
       to right,
-      rgba(245, 239, 230, 0.95) 0%,
-      rgba(245, 239, 230, 0.7) 60%,
+      rgba(245, 239, 230, 1) 0%,
+      rgba(245, 239, 230, 0.9) 42%,
+      rgba(245, 239, 230, 0.24) 65%,
+      transparent 100%
+    );
+  }
+
+  .rpg__layout {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact {
+    min-height: 720px;
+  }
+
+  .contact__content {
+    max-width: 530px;
+  }
+
+  .contact__canvas {
+    width: 76%;
+    height: 100%;
+    right: -28%;
+    opacity: 0.4;
+  }
+}
+
+/* ============================================================
+   Responsive — Mobile
+   ============================================================ */
+@media (max-width: 767px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .hero {
+    min-height: max(760px, 100svh);
+    align-items: flex-start;
+  }
+
+  .hero__content {
+    padding: calc(var(--header-height) + 30px) var(--container-pad) 360px;
+  }
+
+  .hero__text {
+    gap: var(--spacing-18);
+    max-width: min(100%, 430px);
+  }
+
+  .hero__title {
+    font-size: clamp(42px, 13vw, 52px);
+    line-height: 1.02;
+  }
+
+  .hero__description {
+    font-size: 16px;
+    line-height: 1.55;
+    max-width: 350px;
+  }
+
+  .hero__actions {
+    gap: var(--spacing-12);
+  }
+
+  .hero__canvas {
+    top: auto;
+    right: auto;
+    bottom: 28px;
+    left: 50%;
+    width: min(106vw, 500px);
+    height: min(42vh, 340px);
+    transform: translateX(-50%);
+  }
+
+  .hero__mask {
+    background: linear-gradient(
+      to bottom,
+      rgba(245, 239, 230, 1) 0%,
+      rgba(245, 239, 230, 0.96) 34%,
+      rgba(245, 239, 230, 0.22) 48%,
+      rgba(245, 239, 230, 0.02) 64%,
       transparent 100%
     );
   }
@@ -1266,14 +1367,83 @@ button {
   .contact__title br { display: none; }
   .section-title br { display: none; }
 
+  .rpg__layout {
+    gap: var(--spacing-16);
+  }
+
+  .rpg__panel-header,
+  .rpg__panel-footer {
+    padding: var(--spacing-12) var(--spacing-14, 14px);
+  }
+
+  .rpg__header-text {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  .rpg__avatar-area {
+    padding: var(--spacing-16);
+    gap: var(--spacing-14, 14px);
+  }
+
+  .rpg__avatar-ring {
+    width: 64px;
+    height: 64px;
+  }
+
+  .rpg__stat-row {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+    padding: var(--spacing-8) 0;
+  }
+
+  .rpg__stats-list,
+  .rpg__skills-list {
+    padding-left: var(--spacing-16);
+    padding-right: var(--spacing-16);
+  }
+
+  .rpg__skill {
+    gap: var(--spacing-8);
+  }
+
+  .rpg__quote {
+    margin-left: var(--spacing-16);
+    margin-right: var(--spacing-16);
+  }
+
+  .project-card {
+    padding: var(--spacing-12);
+    gap: var(--spacing-16);
+  }
+
+  .project-card__title {
+    font-size: 20px;
+  }
+
+  .project-card__desc {
+    font-size: 15px;
+  }
+
+  .contact {
+    min-height: auto;
+    padding-bottom: 150px;
+  }
+
+  .contact__content {
+    gap: var(--spacing-20);
+    max-width: 100%;
+  }
+
   .contact__canvas {
-    width: 100%;
-    height: 60%;
+    width: min(58vw, 230px);
+    height: 210px;
     top: auto;
     bottom: 0;
-    right: 0;
-    transform: none;
-    opacity: 0.3;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.42;
   }
 
   .footer__inner {
@@ -1295,6 +1465,12 @@ button {
   .hero__actions {
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
   }
 
   .projects__grid {
@@ -1304,5 +1480,10 @@ button {
   .contact__socials {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .social-link {
+    width: 100%;
+    justify-content: center;
   }
 }

@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // Typewriter effect for RPG stat values
 function typeText(el, text, delay = 0) {
   el.textContent = ''
+  el.classList.remove('typed')
   const chars = text.split('')
   let i = 0
 
@@ -11,7 +12,10 @@ function typeText(el, text, delay = 0) {
     const interval = setInterval(() => {
       el.textContent += chars[i]
       i++
-      if (i >= chars.length) clearInterval(interval)
+      if (i >= chars.length) {
+        clearInterval(interval)
+        el.classList.add('typed')
+      }
     }, 38)
   }, delay)
 }
@@ -36,15 +40,18 @@ export function initRpgPanel() {
 
   function animatePanels() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    const isStacked = window.matchMedia('(max-width: 899px)').matches
+    const infoFrom = isStacked ? { y: 28, opacity: 0 } : { x: -60, opacity: 0 }
+    const skillsFrom = isStacked ? { y: 28, opacity: 0 } : { x: 60, opacity: 0 }
 
     // Panels slide in
     tl.fromTo(infoPanel,
-      { x: -60, opacity: 0 },
-      { x: 0,   opacity: 1, duration: 0.75 }
+      infoFrom,
+      { x: 0, y: 0, opacity: 1, duration: 0.75 }
     )
     tl.fromTo(skillsPanel,
-      { x: 60, opacity: 0 },
-      { x: 0,  opacity: 1, duration: 0.75 },
+      skillsFrom,
+      { x: 0, y: 0, opacity: 1, duration: 0.75 },
       0.15
     )
 
