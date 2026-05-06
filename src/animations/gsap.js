@@ -71,6 +71,8 @@ export function initHeroAnimations() {
 }
 
 export function initScrollAnimations() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   /* ── Projects ── */
   if (document.querySelector('.projects-header')) {
     gsap.fromTo('.projects-header',
@@ -101,6 +103,36 @@ export function initScrollAnimations() {
 
   /* ── Contact ── */
   if (!document.querySelector('.contact')) return
+
+  if (!prefersReduced && document.querySelector('.contact__canvas')) {
+    gsap.matchMedia().add(
+      {
+        isPhone: '(max-width: 767px)',
+        isDesktop: '(min-width: 768px)',
+      },
+      context => {
+        const { isPhone } = context.conditions
+
+        gsap.fromTo('.contact__canvas',
+          {
+            '--contact-orb-scale': isPhone ? 0.92 : 0.96,
+            autoAlpha: isPhone ? 0.24 : 0.48,
+          },
+          {
+            '--contact-orb-scale': isPhone ? 1.04 : 1.08,
+            autoAlpha: isPhone ? 0.38 : 0.72,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.contact',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1.2,
+            },
+          }
+        )
+      }
+    )
+  }
 
   const contactTl = gsap.timeline({
     scrollTrigger: { trigger: '.contact', start: 'top 75%', once: true },

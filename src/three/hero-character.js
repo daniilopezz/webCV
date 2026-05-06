@@ -181,17 +181,18 @@ export class HeroCharacter {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, pixelRatio))
 
     if (isPhone) {
-      this.stage.position.set(0.12, -0.42, 0)
-      this.stage.scale.setScalar(0.96)
-      this.camera.fov = 36
-      this.camera.position.set(0.90, 2.46, 5.25)
-      this.camera.lookAt(0.16, 1.24, 0)
+      const isNarrow = width < 390
+      this.stage.position.set(isNarrow ? -0.20 : -0.14, 0.02, 0)
+      this.stage.scale.setScalar(isNarrow ? 0.78 : 0.84)
+      this.camera.fov = isNarrow ? 42 : 41
+      this.camera.position.set(0.62, 2.68, isNarrow ? 6.55 : 6.25)
+      this.camera.lookAt(0.04, 1.34, 0)
     } else if (isTablet) {
-      this.stage.position.set(-0.92, -0.16, 0)
-      this.stage.scale.setScalar(0.82)
-      this.camera.fov = 44
-      this.camera.position.set(1.20, 3.05, 7.6)
-      this.camera.lookAt(-0.44, 1.38, 0)
+      this.stage.position.set(-0.70, -0.12, 0)
+      this.stage.scale.setScalar(0.78)
+      this.camera.fov = 43
+      this.camera.position.set(1.12, 3.02, 8.0)
+      this.camera.lookAt(-0.28, 1.36, 0)
     } else {
       this.stage.position.set(1.55, -0.02, 0)
       this.stage.scale.setScalar(0.94)
@@ -201,6 +202,31 @@ export class HeroCharacter {
     }
 
     this.camera.updateProjectionMatrix()
+    this.applyFloatingLayout(width)
+  }
+
+  applyFloatingLayout(width = window.innerWidth) {
+    if (!this.refs.floatBadges) return
+
+    const isPhone = width < 640
+    const isNarrow = width < 390
+    const mobile = {
+      Python:     { x: -0.22, y: 3.02, z: 0.12, s: isNarrow ? 0.29 : 0.31 },
+      ML:         { x: 1.16,  y: 2.70, z: 0.05, s: isNarrow ? 0.25 : 0.27 },
+      DATA:       { x: 1.05,  y: 3.17, z: -0.10, s: isNarrow ? 0.28 : 0.30 },
+      PostgreSQL: { x: -0.02, y: 2.34, z: -0.18, s: isNarrow ? 0.28 : 0.30 },
+      Docker:     { x: 0.60,  y: 3.34, z: 0.25, s: isNarrow ? 0.25 : 0.27 },
+    }
+
+    this.refs.floatBadges.forEach(badge => {
+      const d = badge.userData
+      const next = isPhone ? mobile[d.label] : null
+      d.baseX = next?.x ?? d.homeX
+      d.baseY = next?.y ?? d.homeY
+      d.s = next?.s ?? d.homeScale
+      badge.position.z = next?.z ?? d.homeZ
+      badge.scale.set(d.s * 2.55, d.s, 1)
+    })
   }
 
   /* ─── Lights ────────────────────────────────────── */
@@ -536,6 +562,10 @@ export class HeroCharacter {
       sprite.scale.set(d.s * 2.55, d.s, 1)
       sprite.userData = {
         ...d,
+        homeX: d.x,
+        homeY: d.y,
+        homeZ: d.z,
+        homeScale: d.s,
         baseX: d.x,
         baseY: d.y,
         cycle: 7.2,
@@ -543,6 +573,8 @@ export class HeroCharacter {
       this.stage.add(sprite)
       return sprite
     })
+
+    this.applyFloatingLayout(window.innerWidth)
   }
 
   /* ─── Events ─────────────────────────────────────── */

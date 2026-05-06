@@ -25,6 +25,7 @@ export class ContactScene {
     this.renderer.setClearColor(0x000000, 0)
 
     this.scene = new THREE.Scene()
+    this.scene.rotation.set(-0.08, -0.16, 0.03)
 
     this.camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100)
     this.applyViewportLayout(w)
@@ -37,34 +38,37 @@ export class ContactScene {
 
   buildGlobe() {
     // Solid core (hologram blue)
-    const coreGeo = new THREE.IcosahedronGeometry(1.35, 4)
+    const coreGeo = new THREE.IcosahedronGeometry(1.72, 4)
     const coreMat = new THREE.MeshPhongMaterial({
       color: new THREE.Color('#001a4a'),
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.56,
+      shininess: 36,
+      emissive: new THREE.Color('#003585'),
+      emissiveIntensity: 0.14,
     })
     const core = new THREE.Mesh(coreGeo, coreMat)
     this.scene.add(core)
-    this.meshes.push({ mesh: core, rx: 0.003, ry: 0.004 })
+    this.meshes.push({ mesh: core, rx: 0.0024, ry: 0.0036 })
 
     // Wireframe shell
-    const wireGeo = new THREE.IcosahedronGeometry(1.38, 3)
+    const wireGeo = new THREE.IcosahedronGeometry(1.78, 3)
     const wireMat = new THREE.MeshBasicMaterial({
       color: new THREE.Color('#34bfff'),
       wireframe: true,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.46,
     })
     const wire = new THREE.Mesh(wireGeo, wireMat)
     this.scene.add(wire)
-    this.meshes.push({ mesh: wire, rx: 0.003, ry: 0.004 })
+    this.meshes.push({ mesh: wire, rx: 0.0028, ry: 0.0044 })
   }
 
   buildRings() {
     const ringData = [
-      { radius: 1.9, tube: 0.008, opacity: 0.4, rx: Math.PI / 2, ry: 0, rz: 0 },
-      { radius: 2.3, tube: 0.006, opacity: 0.25, rx: Math.PI / 3, ry: 0.5, rz: 0.3 },
-      { radius: 2.7, tube: 0.004, opacity: 0.15, rx: Math.PI / 6, ry: 1.1, rz: 0.6 },
+      { radius: 2.34, tube: 0.010, opacity: 0.48, rx: Math.PI / 2, ry: 0, rz: 0 },
+      { radius: 2.82, tube: 0.007, opacity: 0.30, rx: Math.PI / 3, ry: 0.5, rz: 0.3 },
+      { radius: 3.28, tube: 0.005, opacity: 0.18, rx: Math.PI / 6, ry: 1.1, rz: 0.6 },
     ]
 
     ringData.forEach(d => {
@@ -82,9 +86,9 @@ export class ContactScene {
   }
 
   buildParticles() {
-    const count = 200
+    const count = window.innerWidth < 640 ? 160 : 260
     const positions = new Float32Array(count * 3)
-    const radius = 2.2
+    const radius = 2.85
 
     for (let i = 0; i < count; i++) {
       const phi = Math.acos(2 * Math.random() - 1)
@@ -101,10 +105,10 @@ export class ContactScene {
 
     const mat = new THREE.PointsMaterial({
       color: new THREE.Color('#34bfff'),
-      size: 1.5,
+      size: window.innerWidth < 640 ? 1.25 : 1.65,
       sizeAttenuation: false,
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.56,
     })
 
     const points = new THREE.Points(geo, mat)
@@ -130,14 +134,14 @@ export class ContactScene {
     const isTablet = width >= 640 && width < 1024
 
     if (isPhone) {
-      this.camera.fov = 48
-      this.camera.position.set(0, 0, 10.4)
+      this.camera.fov = 46
+      this.camera.position.set(0, 0, 8.0)
     } else if (isTablet) {
-      this.camera.fov = 45
-      this.camera.position.set(0, 0, 7.2)
+      this.camera.fov = 44
+      this.camera.position.set(0, 0, 6.6)
     } else {
-      this.camera.fov = 45
-      this.camera.position.set(0, 0, 6)
+      this.camera.fov = 43
+      this.camera.position.set(0, 0, 5.9)
     }
     this.camera.updateProjectionMatrix()
   }
@@ -164,8 +168,9 @@ export class ContactScene {
       mesh.rotation.y += ry
     })
 
-    // Gentle floating
+    // Gentle floating and a slow whole-scene turn for a more integrated final visual.
     this.scene.position.y = Math.sin(t * 0.4) * 0.08
+    this.scene.rotation.y = -0.16 + t * 0.035
 
     this.renderer.render(this.scene, this.camera)
   }
