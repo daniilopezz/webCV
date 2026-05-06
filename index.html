@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Daniel Lopez Aguirre — AI & Python Developer. Combino inteligencia artificial y Python para crear productos digitales con visión estratégica." />
+  <meta property="og:title" content="Daniel Lopez Aguirre — AI Developer" />
+  <meta property="og:description" content="Combino inteligencia artificial y Python para crear productos digitales con visión estratégica." />
+  <meta property="og:type" content="website" />
+  <title>Daniel Lopez Aguirre — AI Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700;800;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="header" class="header">
+    <div class="header__inner">
+      <a href="#hero" class="header__logo" aria-label="Inicio">DL</a>
+
+      <nav class="header__nav" aria-label="Navegación principal">
+        <a href="#hero" class="nav-link">Inicio</a>
+        <a href="#about" class="nav-link">Sobre mí</a>
+        <a href="#projects" class="nav-link">Proyectos</a>
+        <a href="#contact" class="nav-link">Contacto</a>
+      </nav>
+
+      <a href="#contact" class="btn btn--primary header__cta">Hablemos</a>
+
+      <button class="header__burger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <a href="#hero" class="mobile-nav__link">Inicio</a>
+      <a href="#about" class="mobile-nav__link">Sobre mí</a>
+      <a href="#projects" class="mobile-nav__link">Proyectos</a>
+      <a href="#contact" class="mobile-nav__link">Contacto</a>
+      <a href="mailto:lopezaguirrecoc@gmail.com" class="btn btn--primary mobile-nav__cta">Hablemos</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="hero">
+      <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="hero__mask" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <div class="hero__text">
+          <span class="accent-tag hero-tag">AI &amp; DATA DEVELOPER</span>
+          <h1 class="hero__title">
+            <span class="hero__title-line"><span>Daniel</span></span>
+            <span class="hero__title-line"><span>Lopez</span></span>
+            <span class="hero__title-line"><span>Aguirre</span></span>
+          </h1>
+          <p class="hero__description">
+            Combino inteligencia artificial y Python para crear<br>
+            productos digitales con visión estratégica.
+          </p>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">Ver proyectos</a>
+            <a href="#contact" class="btn btn--ghost">Contactar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <div class="scroll-mouse">
+          <div class="scroll-mouse__dot"></div>
+        </div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT — RPG PANEL ===== -->
+    <section id="about" class="about section">
+      <div class="container">
+
+        <div class="rpg__layout">
+
+          <!-- Left panel: identity stats -->
+          <div class="rpg__panel rpg__panel--info" id="rpg-info">
+            <div class="rpg__panel-header">
+              <span class="rpg__corner rpg__corner--tl"></span>
+              <span class="rpg__header-text">◄ PLAYER PROFILE</span>
+              <span class="rpg__corner rpg__corner--tr"></span>
+            </div>
+
+            <div class="rpg__avatar-area" aria-hidden="true">
+              <div class="rpg__avatar-ring">
+                <span class="rpg__avatar-initials">DL</span>
+              </div>
+              <div class="rpg__level-badge">LVL 22</div>
+            </div>
+
+            <div class="rpg__stats-list">
+              <div class="rpg__stat-row">
+                <span class="rpg__key">NOMBRE</span>
+                <span class="rpg__val" data-type="Daniel Lopez Aguirre"></span>
+              </div>
+              <div class="rpg__stat-row">
+                <span class="rpg__key">EDAD</span>
+                <span class="rpg__val" data-type="22"></span>
+              </div>
+              <div class="rpg__stat-row">
+                <span class="rpg__key">CIUDAD</span>
+                <span class="rpg__val" data-type="Almería, ES"></span>
+              </div>
+              <div class="rpg__stat-row">
+                <span class="rpg__key">CLASE</span>
+                <span class="rpg__val" data-type="Analista de Datos &amp; AI"></span>
+              </div>
+              <div class="rpg__stat-row">
+                <span class="rpg__key">STATUS</span>
+                <span class="rpg__val rpg__val--blink" data-type="Disponible ●"></span>
+              </div>
+            </div>
+
+            <div class="rpg__panel-footer">
+              <span class="rpg__corner rpg__corner--bl"></span>
+              <span class="rpg__footer-text">daniilopezz.github.io</span>
+              <span class="rpg__corner rpg__corner--br"></span>
+            </div>
+          </div>
+
+          <!-- Right panel: skills -->
+          <div class="rpg__panel rpg__panel--skills" id="rpg-skills">
+            <div class="rpg__panel-header">
+              <span class="rpg__corner rpg__corner--tl"></span>
+              <span class="rpg__header-text">── HABILIDADES</span>
+              <span class="rpg__corner rpg__corner--tr"></span>
+            </div>
+
+            <div class="rpg__skills-list">
+              <div class="rpg__skill" data-value="88">
+                <span class="rpg__skill-name">Python</span>
+                <div class="rpg__bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="rpg__bar-fill"></div>
+                </div>
+                <span class="rpg__skill-num">88</span>
+              </div>
+              <div class="rpg__skill" data-value="75">
+                <span class="rpg__skill-name">Machine Learning</span>
+                <div class="rpg__bar" role="progressbar" aria-valuenow="75">
+                  <div class="rpg__bar-fill"></div>
+                </div>
+                <span class="rpg__skill-num">75</span>
+              </div>
+              <div class="rpg__skill" data-value="70">
+                <span class="rpg__skill-name">Data Engineering</span>
+                <div class="rpg__bar" role="progressbar" aria-valuenow="70">
+                  <div class="rpg__bar-fill"></div>
+                </div>
+                <span class="rpg__skill-num">70</span>
+              </div>
+              <div class="rpg__skill" data-value="65">
+                <span class="rpg__skill-name">SQL &amp; Bases de datos</span>
+                <div class="rpg__bar" role="progressbar" aria-valuenow="65">
+                  <div class="rpg__bar-fill"></div>
+                </div>
+                <span class="rpg__skill-num">65</span>
+              </div>
+              <div class="rpg__skill" data-value="60">
+                <span class="rpg__skill-name">Docker</span>
+                <div class="rpg__bar" role="progressbar" aria-valuenow="60">
+                  <div class="rpg__bar-fill"></div>
+                </div>
+                <span class="rpg__skill-num">60</span>
+              </div>
+              <div class="rpg__skill" data-value="55">
+                <span class="rpg__skill-name">Análisis predictivo</span>
+                <div class="rpg__bar" role="progressbar" aria-valuenow="55">
+                  <div class="rpg__bar-fill"></div>
+                </div>
+                <span class="rpg__skill-num">55</span>
+              </div>
+            </div>
+
+            <div class="rpg__quote">
+              <span class="rpg__quote-mark">"</span>
+              No solo diseño objetos — diseño sistemas.
+              <span class="rpg__quote-mark">"</span>
+            </div>
+
+            <div class="rpg__panel-footer">
+              <span class="rpg__corner rpg__corner--bl"></span>
+              <span class="rpg__footer-text">© 2025 — EN PROGRESO</span>
+              <span class="rpg__corner rpg__corner--br"></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="projects section">
+      <div class="container">
+        <div class="section-header projects-header">
+          <span class="accent-tag">Proyectos</span>
+          <h2 class="section-title">Lo que he construido.</h2>
+        </div>
+
+        <div class="projects__grid" id="projects-grid" aria-label="Lista de proyectos">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="contact section">
+      <canvas id="contact-canvas" class="contact__canvas" aria-hidden="true"></canvas>
+
+      <div class="container">
+        <div class="contact__content">
+          <span class="accent-tag contact-tag">Contacto</span>
+          <h2 class="contact__title">Hablemos de tu<br>próximo proyecto.</h2>
+          <p class="contact__description">
+            Estoy disponible para colaboraciones, proyectos freelance y oportunidades interesantes. Escríbeme y lo hablamos.
+          </p>
+          <a href="mailto:lopezaguirrecoc@gmail.com" class="btn btn--primary contact-cta">
+            Enviar un mensaje
+          </a>
+          <div class="contact__socials" id="contact-socials">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__left">
+          <a href="#hero" class="footer__logo">DL</a>
+          <p class="footer__copy">© 2025 Daniel Lopez Aguirre</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Navegación footer">
+          <a href="#hero" class="nav-link">Inicio</a>
+          <a href="#about" class="nav-link">Sobre mí</a>
+          <a href="#projects" class="nav-link">Proyectos</a>
+          <a href="#contact" class="nav-link">Contacto</a>
+        </nav>
+
+        <div class="footer__socials" id="footer-socials">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+import './style.css'
+
+import { initHeader }          from './components/header.js'
+import { initSplineEasterEgg } from './components/spline-egg.js'
+import { initProjects, initSocials } from './sections/projects.js'
+import { initRpgPanel }        from './sections/about.js'
+import { initLenis }           from './animations/lenis.js'
+import { initHeroAnimations, initScrollAnimations } from './animations/gsap.js'
+import { HeroCharacter }       from './three/hero-character.js'
+import { ContactScene }        from './three/contact-scene.js'
+
+document.addEventListener('DOMContentLoaded', () => {
+  // UI
+  initHeader()
+  initSplineEasterEgg()
+  initProjects()
+  initSocials()
+
+  // RPG about panel
+  initRpgPanel()
+
+  // Smooth scroll + GSAP
+  initLenis()
+  initHeroAnimations()
+  initScrollAnimations()
+
+  // Three.js character — only on desktop for performance
+  const heroCanvas = document.getElementById('hero-canvas')
+  if (heroCanvas && !window.matchMedia('(max-width: 767px)').matches) {
+    new HeroCharacter(heroCanvas)
+  }
+
+  // Contact globe — all devices (lighter scene)
+  const contactCanvas = document.getElementById('contact-canvas')
+  if (contactCanvas) {
+    new ContactScene(contactCanvas)
+  }
+})
