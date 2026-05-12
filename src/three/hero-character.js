@@ -188,11 +188,11 @@ export class HeroCharacter {
       this.camera.position.set(0.62, 2.68, isNarrow ? 6.55 : 6.25)
       this.camera.lookAt(0.04, 1.34, 0)
     } else if (isTablet) {
-      this.stage.position.set(-0.70, -0.12, 0)
-      this.stage.scale.setScalar(0.78)
+      this.stage.position.set(-0.28, -0.10, 0)
+      this.stage.scale.setScalar(0.82)
       this.camera.fov = 43
-      this.camera.position.set(1.12, 3.02, 8.0)
-      this.camera.lookAt(-0.28, 1.36, 0)
+      this.camera.position.set(0.96, 3.02, 7.9)
+      this.camera.lookAt(-0.08, 1.36, 0)
     } else {
       this.stage.position.set(1.55, -0.02, 0)
       this.stage.scale.setScalar(0.94)

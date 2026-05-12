@@ -73,6 +73,56 @@ export function initHeroAnimations() {
 export function initScrollAnimations() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  /* ── Profile details ── */
+  if (document.querySelector('.about-profile')) {
+    gsap.fromTo('.about-profile__header',
+      { y: 42, opacity: 0 },
+      {
+        y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: '.about-profile', start: 'top 82%', once: true },
+      }
+    )
+
+    gsap.fromTo('.about-profile__intro',
+      { y: 34, opacity: 0 },
+      {
+        y: 0, opacity: 1, duration: 0.75, ease: 'power3.out',
+        scrollTrigger: { trigger: '.about-profile__grid', start: 'top 84%', once: true },
+      }
+    )
+
+    const credentialCards = gsap.utils.toArray('.credential-card')
+    if (credentialCards.length) {
+      gsap.set(credentialCards, { y: 44, opacity: 0 })
+      ScrollTrigger.batch(credentialCards, {
+        start: 'top 88%',
+        once: true,
+        onEnter: batch => gsap.to(batch, {
+          y: 0,
+          opacity: 1,
+          duration: 0.68,
+          stagger: 0.08,
+          ease: 'power3.out',
+          overwrite: true,
+        }),
+      })
+    }
+
+    const languageFills = gsap.utils.toArray('.language-meter__fill')
+    if (languageFills.length && !prefersReduced) {
+      gsap.fromTo(languageFills,
+        { width: '0%' },
+        {
+          width: (_, el) => getComputedStyle(el.parentElement.parentElement).getPropertyValue('--language-level').trim(),
+          duration: 0.9,
+          stagger: 0.09,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: '.credential-card--languages', start: 'top 86%', once: true },
+        }
+      )
+    }
+  }
+
   /* ── Projects ── */
   if (document.querySelector('.projects-header')) {
     gsap.fromTo('.projects-header',

@@ -1,8 +1,333 @@
+export const languages = [
+  { code: 'es', label: 'Español', flag: '🇪🇸' },
+  { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+  { code: 'en', label: 'English', flag: '🇬🇧' },
+]
+
+export const siteCopy = {
+  es: {
+    meta: {
+      title: 'Daniel Lopez Aguirre — Web & Data Developer',
+      description: 'Portfolio de Daniel Lopez Aguirre, desarrollador web y data scientist en formación entre Almería y Catania.',
+    },
+    nav: {
+      home: 'Inicio',
+      about: 'Sobre mí',
+      projects: 'Proyectos',
+      contact: 'Contacto',
+      cta: 'Hablemos',
+      menu: 'Abrir menú',
+    },
+    hero: {
+      tag: 'WEB & DATA DEVELOPER',
+      description: 'Construyo experiencias web y soluciones con Python,<br>datos e interfaces cuidadas.',
+      primary: 'Ver proyectos',
+      secondary: 'Contactar',
+    },
+    rpg: {
+      profileTitle: '◄ PLAYER PROFILE',
+      skillsTitle: '── HABILIDADES',
+      name: 'NOMBRE',
+      age: 'EDAD',
+      city: 'CIUDAD',
+      class: 'CLASE',
+      status: 'STATUS',
+      nameValue: 'Daniel Lopez Aguirre',
+      ageValue: '22',
+      cityValue: 'Almería → Catania',
+      classValue: 'Web Developer & Data Scientist',
+      statusValue: 'Disponible ●',
+      footer: 'daniilopezz.github.io',
+      progress: '© 2026 — EN PROGRESO',
+      quote: '<span class="rpg__quote-mark">"</span>Aprendo rápido, trabajo bien en equipo y me adapto con paciencia a cada reto.<span class="rpg__quote-mark">"</span>',
+      skills: {
+        python: 'Python',
+        web: 'Desarrollo Web',
+        data: 'Data Science',
+        sql: 'SQL & Bases de datos',
+        teamwork: 'Trabajo en equipo',
+        learning: 'Aprendizaje rápido',
+      },
+    },
+    about: {
+      tag: 'Perfil',
+      title: 'Motivación, web y datos.',
+      intro: [
+        'Hola! Me llamo Dani, soy de Almería y actualmente vivo en Catania. Soy una persona motivada por trabajar en una empresa donde pueda aportar, aprender y dar lo máximo de mí.',
+        'Siempre me ha gustado la informática, por eso la convertí en mi camino de estudios. Mientras estudiaba, también realizaba páginas web para mí y para mi familia, combinando práctica real con aprendizaje constante.',
+        'Fuera de la informática, uno de mis grandes hobbies es el fútbol. Además, ejerzo como árbitro en la RFAF, una experiencia que me ha ayudado a trabajar la concentración, la comunicación y la toma de decisiones.'
+      ],
+      traits: ['Flexible', 'Aprendo rápido', 'Buen trabajo en equipo', 'Paciente'],
+      educationTitle: 'Estudios',
+      experienceTitle: 'Experiencia laboral',
+      languagesTitle: 'Idiomas',
+      education: [
+        {
+          title: 'Grado Superior en Desarrollo de Aplicaciones Web',
+          meta: 'Formación profesional',
+          detail: 'Base sólida en desarrollo frontend, backend, bases de datos y creación de aplicaciones web completas.',
+        },
+        {
+          title: 'Curso de Especialización en Desarrollo de Aplicaciones Python',
+          meta: 'Higher Level Access',
+          detail: 'Especialización orientada a desarrollo de aplicaciones con Python, automatización y trabajo con datos.',
+        },
+      ],
+      experience: [
+        {
+          title: 'Web Development',
+          company: 'MLSoftware · Catania',
+          date: 'Marzo 2025 - Junio 2025',
+          detail: 'Prácticas de empresa centradas en desarrollo web, mantenimiento de interfaces y soporte a proyectos digitales.',
+        },
+        {
+          title: 'Data Scientist',
+          company: 'KeyOver · Catania',
+          date: 'Marzo 2026 - Junio 2026',
+          detail: 'Prácticas de empresa enfocadas en análisis de datos, Python y apoyo a procesos de ciencia de datos.',
+        },
+      ],
+      languages: [
+        { name: 'Español', level: 'Nativo', value: 100 },
+        { name: 'Inglés', level: 'B1', value: 58 },
+        { name: 'Italiano', level: 'B2', value: 76 },
+      ],
+    },
+    projects: {
+      tag: 'Proyectos',
+      title: 'Lo que he construido.',
+      github: 'Ver en GitHub',
+      aria: 'Ver {title} en GitHub',
+    },
+    contact: {
+      tag: 'Contacto',
+      title: 'Hablemos de tu<br>próximo proyecto.',
+      description: 'Estoy disponible para oportunidades profesionales, prácticas, colaboraciones y proyectos donde pueda aportar con desarrollo web, Python y datos.',
+      cta: 'Enviar un mensaje',
+    },
+    footer: {
+      copy: '© 2026 Daniel Lopez Aguirre',
+    },
+  },
+  it: {
+    meta: {
+      title: 'Daniel Lopez Aguirre — Web & Data Developer',
+      description: 'Portfolio di Daniel Lopez Aguirre, sviluppatore web e data scientist in formazione tra Almería e Catania.',
+    },
+    nav: {
+      home: 'Home',
+      about: 'Chi sono',
+      projects: 'Progetti',
+      contact: 'Contatto',
+      cta: 'Parliamo',
+      menu: 'Apri menu',
+    },
+    hero: {
+      tag: 'WEB & DATA DEVELOPER',
+      description: 'Creo esperienze web e soluzioni con Python,<br>dati e interfacce curate.',
+      primary: 'Vedi progetti',
+      secondary: 'Contattami',
+    },
+    rpg: {
+      profileTitle: '◄ PLAYER PROFILE',
+      skillsTitle: '── COMPETENZE',
+      name: 'NOME',
+      age: 'ETÀ',
+      city: 'CITTÀ',
+      class: 'CLASSE',
+      status: 'STATO',
+      nameValue: 'Daniel Lopez Aguirre',
+      ageValue: '22',
+      cityValue: 'Almería → Catania',
+      classValue: 'Web Developer & Data Scientist',
+      statusValue: 'Disponibile ●',
+      footer: 'daniilopezz.github.io',
+      progress: '© 2026 — IN CRESCITA',
+      quote: '<span class="rpg__quote-mark">"</span>Imparo velocemente, lavoro bene in team e affronto ogni sfida con pazienza.<span class="rpg__quote-mark">"</span>',
+      skills: {
+        python: 'Python',
+        web: 'Sviluppo Web',
+        data: 'Data Science',
+        sql: 'SQL & Database',
+        teamwork: 'Lavoro in team',
+        learning: 'Apprendimento rapido',
+      },
+    },
+    about: {
+      tag: 'Profilo',
+      title: 'Motivazione, web e dati.',
+      intro: [
+        'Ciao! Mi chiamo Dani, sono di Almería e attualmente vivo a Catania. Sono una persona motivata a lavorare in un’azienda dove poter contribuire, imparare e dare il massimo.',
+        'L’informatica mi è sempre piaciuta, per questo l’ho scelta come percorso di studio. Durante gli studi realizzavo anche pagine web per me e per la mia famiglia, unendo pratica reale e apprendimento costante.',
+        'Fuori dall’informatica, uno dei miei hobby principali è il calcio. Inoltre sono arbitro nella RFAF, un’esperienza che mi ha aiutato a migliorare concentrazione, comunicazione e capacità decisionale.'
+      ],
+      traits: ['Flessibile', 'Imparo velocemente', 'Buon lavoro in team', 'Paziente'],
+      educationTitle: 'Formazione',
+      experienceTitle: 'Esperienza lavorativa',
+      languagesTitle: 'Lingue',
+      education: [
+        {
+          title: 'Grado Superiore in Sviluppo di Applicazioni Web',
+          meta: 'Formazione professionale',
+          detail: 'Base solida in frontend, backend, database e sviluppo di applicazioni web complete.',
+        },
+        {
+          title: 'Specialization Course in Python Application Development',
+          meta: 'Higher Level Access',
+          detail: 'Specializzazione orientata allo sviluppo di applicazioni Python, automazione e lavoro con i dati.',
+        },
+      ],
+      experience: [
+        {
+          title: 'Web Development',
+          company: 'MLSoftware · Catania',
+          date: 'Marzo 2025 - Giugno 2025',
+          detail: 'Tirocinio aziendale focalizzato su sviluppo web, manutenzione di interfacce e supporto a progetti digitali.',
+        },
+        {
+          title: 'Data Scientist',
+          company: 'KeyOver · Catania',
+          date: 'Marzo 2026 - Giugno 2026',
+          detail: 'Tirocinio aziendale orientato ad analisi dati, Python e supporto a processi di data science.',
+        },
+      ],
+      languages: [
+        { name: 'Spagnolo', level: 'Madrelingua', value: 100 },
+        { name: 'Inglese', level: 'B1', value: 58 },
+        { name: 'Italiano', level: 'B2', value: 76 },
+      ],
+    },
+    projects: {
+      tag: 'Progetti',
+      title: 'Quello che ho costruito.',
+      github: 'Vedi su GitHub',
+      aria: 'Vedi {title} su GitHub',
+    },
+    contact: {
+      tag: 'Contatto',
+      title: 'Parliamo del tuo<br>prossimo progetto.',
+      description: 'Sono disponibile per opportunità professionali, tirocini, collaborazioni e progetti in cui contribuire con sviluppo web, Python e dati.',
+      cta: 'Invia un messaggio',
+    },
+    footer: {
+      copy: '© 2026 Daniel Lopez Aguirre',
+    },
+  },
+  en: {
+    meta: {
+      title: 'Daniel Lopez Aguirre — Web & Data Developer',
+      description: 'Portfolio of Daniel Lopez Aguirre, web developer and data scientist in training between Almería and Catania.',
+    },
+    nav: {
+      home: 'Home',
+      about: 'About',
+      projects: 'Projects',
+      contact: 'Contact',
+      cta: 'Let’s talk',
+      menu: 'Open menu',
+    },
+    hero: {
+      tag: 'WEB & DATA DEVELOPER',
+      description: 'I build web experiences and Python solutions<br>with data and carefully crafted interfaces.',
+      primary: 'View projects',
+      secondary: 'Contact',
+    },
+    rpg: {
+      profileTitle: '◄ PLAYER PROFILE',
+      skillsTitle: '── SKILLS',
+      name: 'NAME',
+      age: 'AGE',
+      city: 'CITY',
+      class: 'CLASS',
+      status: 'STATUS',
+      nameValue: 'Daniel Lopez Aguirre',
+      ageValue: '22',
+      cityValue: 'Almería → Catania',
+      classValue: 'Web Developer & Data Scientist',
+      statusValue: 'Available ●',
+      footer: 'daniilopezz.github.io',
+      progress: '© 2026 — IN PROGRESS',
+      quote: '<span class="rpg__quote-mark">"</span>I learn quickly, work well in teams and approach each challenge with patience.<span class="rpg__quote-mark">"</span>',
+      skills: {
+        python: 'Python',
+        web: 'Web Development',
+        data: 'Data Science',
+        sql: 'SQL & Databases',
+        teamwork: 'Teamwork',
+        learning: 'Fast learning',
+      },
+    },
+    about: {
+      tag: 'Profile',
+      title: 'Motivation, web and data.',
+      intro: [
+        'Hi! My name is Dani, I am from Almería and I currently live in Catania. I am highly motivated to work in a company where I can contribute, keep learning and give my best.',
+        'I have always liked computing, so I chose it as my study path. While studying, I also built websites for myself and my family, combining real practice with constant learning.',
+        'Outside tech, one of my main hobbies is football. I also work as a referee in the RFAF, an experience that has helped me improve focus, communication and decision-making.'
+      ],
+      traits: ['Flexible', 'Fast learner', 'Good teamwork', 'Patient'],
+      educationTitle: 'Education',
+      experienceTitle: 'Work experience',
+      languagesTitle: 'Languages',
+      education: [
+        {
+          title: 'Higher Degree in Web Application Development',
+          meta: 'Vocational training',
+          detail: 'Strong foundation in frontend, backend, databases and complete web application development.',
+        },
+        {
+          title: 'Specialization Course in Python Application Development',
+          meta: 'Higher Level Access',
+          detail: 'Specialization focused on Python application development, automation and data workflows.',
+        },
+      ],
+      experience: [
+        {
+          title: 'Web Development',
+          company: 'MLSoftware · Catania',
+          date: 'March 2025 - June 2025',
+          detail: 'Company internship focused on web development, interface maintenance and support for digital projects.',
+        },
+        {
+          title: 'Data Scientist',
+          company: 'KeyOver · Catania',
+          date: 'March 2026 - June 2026',
+          detail: 'Company internship focused on data analysis, Python and support for data science processes.',
+        },
+      ],
+      languages: [
+        { name: 'Spanish', level: 'Native', value: 100 },
+        { name: 'English', level: 'B1', value: 58 },
+        { name: 'Italian', level: 'B2', value: 76 },
+      ],
+    },
+    projects: {
+      tag: 'Projects',
+      title: 'What I have built.',
+      github: 'View on GitHub',
+      aria: 'View {title} on GitHub',
+    },
+    contact: {
+      tag: 'Contact',
+      title: 'Let’s talk about your<br>next project.',
+      description: 'I am available for professional opportunities, internships, collaborations and projects where I can contribute with web development, Python and data.',
+      cta: 'Send a message',
+    },
+    footer: {
+      copy: '© 2026 Daniel Lopez Aguirre',
+    },
+  },
+}
+
 export const projects = [
   {
     id: 'datascience',
     title: 'DataScience',
-    description: 'Análisis de comportamiento con Machine Learning para detección de patrones y predicción. Base para sistemas de detección de anomalías.',
+    description: {
+      es: 'Análisis de comportamiento con Machine Learning para detección de patrones y predicción. Base para sistemas de detección de anomalías.',
+      it: 'Analisi del comportamento con Machine Learning per rilevamento di pattern e previsione. Base per sistemi di rilevamento anomalie.',
+      en: 'Behavior analysis with Machine Learning for pattern detection and prediction. A foundation for anomaly detection systems.',
+    },
     lang: 'Python',
     bgFrom: '#e1f5ff',
     bgTo: '#b8e8ff',
@@ -12,7 +337,11 @@ export const projects = [
   {
     id: 'sorare',
     title: 'proyecto_sorare',
-    description: 'Aplicación para consultar y monitorizar precios de jugadores en la plataforma de coleccionables deportivos digitales Sorare.',
+    description: {
+      es: 'Aplicación para consultar y monitorizar precios de jugadores en la plataforma de coleccionables deportivos digitales Sorare.',
+      it: 'Applicazione per consultare e monitorare prezzi di giocatori nella piattaforma di collezionabili sportivi digitali Sorare.',
+      en: 'Application to query and monitor player prices on Sorare, the digital sports collectibles platform.',
+    },
     lang: 'Python',
     bgFrom: '#fff4e1',
     bgTo: '#ffe0b0',
@@ -22,7 +351,11 @@ export const projects = [
   {
     id: 'proyecto',
     title: 'proyecto',
-    description: 'Sistema de gestión de alumnos con control de recibos, facturas y automatizaciones para agilizar procesos administrativos.',
+    description: {
+      es: 'Sistema de gestión de alumnos con control de recibos, facturas y automatizaciones para agilizar procesos administrativos.',
+      it: 'Sistema di gestione studenti con controllo di ricevute, fatture e automazioni per rendere più rapidi i processi amministrativi.',
+      en: 'Student management system with receipts, invoices and automations to streamline administrative processes.',
+    },
     lang: 'Python',
     bgFrom: '#edf9ee',
     bgTo: '#c8edc9',
@@ -46,5 +379,10 @@ export const socials = [
     label: 'Instagram',
     url: 'https://instagram.com/daanilopezx',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+  },
+  {
+    label: 'X',
+    url: 'https://x.com/DanIA_Xlopez',
+    icon: `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="currentColor" d="M17.53 3h3.26l-7.12 8.14L22 21h-6.54l-5.12-6.7L4.48 21H1.21l7.62-8.71L1 3h6.71l4.63 6.12L17.53 3Zm-1.14 16.26h1.8L6.73 4.65H4.79l11.6 14.61Z"/></svg>`,
   },
 ]

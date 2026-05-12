@@ -27,6 +27,13 @@ export function initRpgPanel() {
 
   let triggered = false
 
+  window.refreshRpgPanel = () => {
+    const rows = infoPanel.querySelectorAll('.rpg__val')
+    rows.forEach((el, i) => {
+      typeText(el, el.dataset.type || '', i * 90)
+    })
+  }
+
   ScrollTrigger.create({
     trigger: '#about',
     start: 'top 72%',

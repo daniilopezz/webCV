@@ -1,9 +1,10 @@
-import { projects, socials } from '../data/content.js'
+import { projects, socials, siteCopy } from '../data/content.js'
 
-export function initProjects() {
+export function initProjects(lang = 'es') {
   const grid = document.getElementById('projects-grid')
   if (!grid) return
 
+  const copy = siteCopy[lang]?.projects || siteCopy.es.projects
   const arrowSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`
 
   grid.innerHTML = projects.map(p => `
@@ -12,7 +13,7 @@ export function initProjects() {
       target="_blank"
       rel="noopener noreferrer"
       class="project-card"
-      aria-label="Ver ${p.title} en GitHub"
+      aria-label="${copy.aria.replace('{title}', p.title)}"
     >
       <div
         class="project-card__image"
@@ -24,12 +25,12 @@ export function initProjects() {
 
       <div class="project-card__body">
         <h3 class="project-card__title">${p.title}</h3>
-        <p class="project-card__desc">${p.description}</p>
+        <p class="project-card__desc">${p.description[lang] || p.description.es}</p>
       </div>
 
       <div class="project-card__footer">
         <span class="project-card__link">
-          Ver en GitHub
+          ${copy.github}
           <span class="project-card__link-arrow">${arrowSvg}</span>
         </span>
       </div>

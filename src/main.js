@@ -2,8 +2,9 @@ import './style.css'
 
 import { initHeader }          from './components/header.js'
 import { initSplineEasterEgg } from './components/spline-egg.js'
-import { initProjects, initSocials } from './sections/projects.js'
+import { initSocials }         from './sections/projects.js'
 import { initRpgPanel }        from './sections/about.js'
+import { initI18n }            from './i18n.js'
 import { initLenis }           from './animations/lenis.js'
 import { initHeroAnimations, initScrollAnimations } from './animations/gsap.js'
 import { HeroCharacter }       from './three/hero-character.js'
@@ -13,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // UI
   initHeader()
   initSplineEasterEgg()
-  initProjects()
   initSocials()
+  initI18n()
 
   // RPG about panel
   initRpgPanel()

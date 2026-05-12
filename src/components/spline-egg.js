@@ -1,11 +1,4 @@
-// Easter egg: clic 3 veces en el logo DL → aparece la escena Spline
-//
-// Para activarlo necesitas exportar la escena desde Spline:
-//   1. Abre la escena en tu cuenta de Spline
-//   2. Export → Viewer → copia la URL (ej. https://my.spline.design/XXXXX/)
-//   3. Pégala en VIEWER_URL
-//
-const VIEWER_URL = 'https://my.spline.design/98ea05ac-caa4-4984-a855-9db974575952/'
+// Easter egg: clic 3 veces en el logo DL.
 
 export function initSplineEasterEgg() {
   const logo = document.querySelector('.header__logo')
@@ -34,19 +27,25 @@ export function initSplineEasterEgg() {
     overlay = document.createElement('div')
     overlay.className = 'spline-egg-overlay'
     overlay.innerHTML = `
-      <div class="spline-egg-panel">
+      <div class="spline-egg-panel" role="dialog" aria-modal="true" aria-label="DL Lab desbloqueado">
         <div class="spline-egg-header">
-          <span class="spline-egg-title">// mi workspace 3D</span>
+          <span class="spline-egg-title">// DL LAB UNLOCKED</span>
           <button class="spline-egg-close" aria-label="Cerrar">✕</button>
         </div>
-        <iframe
-          class="spline-egg-iframe"
-          src="${VIEWER_URL}"
-          frameborder="0"
-          allowfullscreen
-          title="Interactive Workplace"
-        ></iframe>
-        <p class="spline-egg-hint">Easter egg desbloqueado — clic fuera para cerrar</p>
+        <div class="spline-egg-stage" aria-hidden="true">
+          <div class="spline-egg-grid"></div>
+          <div class="spline-egg-orb">
+            <span class="spline-egg-ring spline-egg-ring--outer"></span>
+            <span class="spline-egg-ring spline-egg-ring--inner"></span>
+            <span class="spline-egg-logo">DL</span>
+          </div>
+          <div class="spline-egg-terminal">
+            <span>STATUS: ONLINE</span>
+            <span>STACK: WEB / PYTHON / DATA</span>
+            <span>LOCATION: CATANIA</span>
+          </div>
+        </div>
+        <p class="spline-egg-hint">Easter egg desbloqueado - clic fuera para cerrar</p>
       </div>
     `
     document.body.appendChild(overlay)
