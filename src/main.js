@@ -1,5 +1,6 @@
 import './style.css'
 
+import { injectSpeedInsights } from '@vercel/speed-insights'
 import { initHeader }          from './components/header.js'
 import { initCookieConsent }   from './components/cookie-consent.js'
 import { initSplineEasterEgg } from './components/spline-egg.js'
@@ -12,6 +13,8 @@ import { HeroCharacter }       from './three/hero-character.js'
 import { ContactScene }        from './three/contact-scene.js'
 
 document.addEventListener('DOMContentLoaded', () => {
+  injectSpeedInsights()
+
   // UI
   initHeader()
   initCookieConsent()
