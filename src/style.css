@@ -1746,17 +1746,17 @@ section[id] {
   .hero__title {
     font-size: clamp(42px, 12.8vw, 52px);
     line-height: 1.09;
-    padding-bottom: 0.03em;
+    padding-bottom: 0.08em;
   }
 
   .hero__title-line {
     overflow: visible;
-    padding-bottom: 0.055em;
-    margin-bottom: -0.035em;
+    padding-bottom: 0.09em;
+    margin-bottom: -0.02em;
   }
 
   .hero__title-line > span {
-    padding-bottom: 0.03em;
+    padding-bottom: 0.06em;
   }
 
   .hero__description {
