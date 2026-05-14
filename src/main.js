@@ -1,5 +1,6 @@
 import './style.css'
 
+import { inject } from '@vercel/analytics'
 import { initHeader }          from './components/header.js'
 import { initSplineEasterEgg } from './components/spline-egg.js'
 import { initSocials }         from './sections/projects.js'
@@ -9,6 +10,8 @@ import { initLenis }           from './animations/lenis.js'
 import { initHeroAnimations, initScrollAnimations } from './animations/gsap.js'
 import { HeroCharacter }       from './three/hero-character.js'
 import { ContactScene }        from './three/contact-scene.js'
+
+inject()
 
 document.addEventListener('DOMContentLoaded', () => {
   // UI
