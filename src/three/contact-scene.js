@@ -134,8 +134,8 @@ export class ContactScene {
     const isTablet = width >= 640 && width < 1024
 
     if (isPhone) {
-      this.camera.fov = 46
-      this.camera.position.set(0, 0, 8.0)
+      this.camera.fov = 42
+      this.camera.position.set(0, 0, 6.3)
     } else if (isTablet) {
       this.camera.fov = 44
       this.camera.position.set(0, 0, 6.6)

@@ -182,11 +182,11 @@ export class HeroCharacter {
 
     if (isPhone) {
       const isNarrow = width < 390
-      this.stage.position.set(isNarrow ? -0.20 : -0.14, 0.02, 0)
-      this.stage.scale.setScalar(isNarrow ? 0.78 : 0.84)
-      this.camera.fov = isNarrow ? 42 : 41
-      this.camera.position.set(0.62, 2.68, isNarrow ? 6.55 : 6.25)
-      this.camera.lookAt(0.04, 1.34, 0)
+      this.stage.position.set(isNarrow ? -0.04 : 0, -0.05, 0)
+      this.stage.scale.setScalar(isNarrow ? 0.9 : 0.98)
+      this.camera.fov = isNarrow ? 40 : 39
+      this.camera.position.set(0.26, 2.62, isNarrow ? 5.95 : 5.65)
+      this.camera.lookAt(0, 1.34, 0)
     } else if (isTablet) {
       this.stage.position.set(-0.28, -0.10, 0)
       this.stage.scale.setScalar(0.82)

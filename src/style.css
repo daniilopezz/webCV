@@ -77,6 +77,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + var(--spacing-16));
 }
 
 body {
@@ -1721,13 +1722,20 @@ section[id] {
     padding: 64px 0;
   }
 
+  .header {
+    background: rgba(245, 239, 230, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: var(--color-mid-tone-beige);
+  }
+
   .hero {
     min-height: auto;
     align-items: flex-start;
   }
 
   .hero__content {
-    padding: calc(var(--header-height) + 28px) var(--container-pad) clamp(286px, 38svh, 330px);
+    padding: calc(var(--header-height) + 34px) var(--container-pad) clamp(284px, 36svh, 336px);
   }
 
   .hero__text {
@@ -1736,8 +1744,19 @@ section[id] {
   }
 
   .hero__title {
-    font-size: clamp(42px, 13vw, 52px);
-    line-height: 1.02;
+    font-size: clamp(42px, 12.8vw, 52px);
+    line-height: 1.09;
+    padding-bottom: 0.03em;
+  }
+
+  .hero__title-line {
+    overflow: visible;
+    padding-bottom: 0.055em;
+    margin-bottom: -0.035em;
+  }
+
+  .hero__title-line > span {
+    padding-bottom: 0.03em;
   }
 
   .hero__description {
@@ -1748,15 +1767,25 @@ section[id] {
 
   .hero__actions {
     gap: var(--spacing-12);
+    width: min(100%, 380px);
+    flex-wrap: nowrap;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 56px;
+    padding-inline: var(--spacing-18);
+    font-size: clamp(16px, 4.2vw, 18px);
   }
 
   .hero__canvas {
     top: auto;
     right: auto;
-    bottom: 0;
+    bottom: -42px;
     left: 50%;
-    width: min(112vw, 500px);
-    height: clamp(260px, 35svh, 320px);
+    width: min(100vw, 460px);
+    height: clamp(270px, 36svh, 330px);
     transform: translateX(-50%);
   }
 
@@ -1772,7 +1801,7 @@ section[id] {
   }
 
   .hero::after {
-    height: 230px;
+    height: 190px;
     background: linear-gradient(
       to bottom,
       rgba(245, 239, 230, 0) 0%,
@@ -1895,17 +1924,19 @@ section[id] {
 
   .contact {
     min-height: auto;
-    padding-bottom: 72px;
+    padding-top: 72px;
+    padding-bottom: clamp(136px, 20svh, 188px);
+    align-items: flex-start;
   }
 
   .contact::before {
     background:
       linear-gradient(
         to bottom,
-        rgba(245, 239, 230, 0.96) 0%,
-        rgba(245, 239, 230, 0.88) 44%,
-        rgba(245, 239, 230, 0.52) 68%,
-        rgba(245, 239, 230, 0.12) 100%
+        rgba(245, 239, 230, 0.98) 0%,
+        rgba(245, 239, 230, 0.84) 35%,
+        rgba(245, 239, 230, 0.46) 66%,
+        rgba(245, 239, 230, 0.18) 100%
       );
   }
 
@@ -1915,14 +1946,15 @@ section[id] {
   }
 
   .contact__canvas {
-    width: min(112vw, 440px);
-    height: 260px;
-    top: auto;
-    bottom: -28px;
+    width: min(150vw, 620px);
+    height: clamp(430px, 58svh, 540px);
+    top: 64%;
+    bottom: auto;
     right: auto;
     left: 50%;
-    transform: translateX(-50%) scale(var(--contact-orb-scale));
-    opacity: 0.18;
+    transform: translate(-50%, -50%) scale(var(--contact-orb-scale));
+    opacity: 0.26;
+    filter: drop-shadow(0 26px 64px rgba(52, 191, 255, 0.16));
   }
 
   .contact__socials {
@@ -1983,19 +2015,13 @@ section[id] {
   }
 
   .hero__content {
-    padding-bottom: clamp(260px, 35svh, 300px);
+    padding-bottom: clamp(270px, 34svh, 312px);
   }
 
   .hero__actions {
     align-items: stretch;
     width: 100%;
     max-width: 320px;
-  }
-
-  .hero__actions .btn {
-    flex: 1 1 0;
-    min-width: 0;
-    padding-inline: var(--spacing-18);
   }
 
   .projects__grid {
@@ -2014,16 +2040,32 @@ section[id] {
 
 @media (max-width: 390px) {
   .hero__title {
-    font-size: clamp(39px, 12.5vw, 48px);
+    font-size: clamp(38px, 12.4vw, 47px);
+    line-height: 1.1;
   }
 
   .hero__content {
-    padding-bottom: 270px;
+    padding-bottom: 278px;
   }
 
   .hero__canvas {
-    width: 116vw;
-    height: 280px;
+    width: min(104vw, 410px);
+    height: 284px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero__actions {
+    gap: var(--spacing-10);
+  }
+
+  .hero__actions .btn {
+    padding-inline: var(--spacing-14);
+    font-size: 15px;
+  }
+
+  .contact__socials {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2034,7 +2076,7 @@ section[id] {
 
   .hero__content {
     padding-top: calc(var(--header-height) + 22px);
-    padding-bottom: 252px;
+    padding-bottom: 256px;
   }
 
   .hero__text {
@@ -2042,6 +2084,7 @@ section[id] {
   }
 
   .hero__canvas {
-    height: 265px;
+    height: 264px;
+    bottom: -34px;
   }
 }

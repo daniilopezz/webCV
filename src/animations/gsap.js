@@ -165,12 +165,12 @@ export function initScrollAnimations() {
 
         gsap.fromTo('.contact__canvas',
           {
-            '--contact-orb-scale': isPhone ? 0.92 : 0.96,
-            autoAlpha: isPhone ? 0.24 : 0.48,
+            '--contact-orb-scale': isPhone ? 0.96 : 0.96,
+            autoAlpha: isPhone ? 0.18 : 0.48,
           },
           {
-            '--contact-orb-scale': isPhone ? 1.04 : 1.08,
-            autoAlpha: isPhone ? 0.38 : 0.72,
+            '--contact-orb-scale': isPhone ? 1.1 : 1.08,
+            autoAlpha: isPhone ? 0.3 : 0.72,
             ease: 'none',
             scrollTrigger: {
               trigger: '.contact',
