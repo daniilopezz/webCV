@@ -98,6 +98,9 @@ export const siteCopy = {
       title: 'Lo que he construido.',
       github: 'Ver en GitHub',
       aria: 'Ver {title} en GitHub',
+      live: 'Ver web',
+      wip: 'En progreso',
+      ariaLive: 'Ver web de {title} (en progreso)',
     },
     contact: {
       tag: 'Contacto',
@@ -202,6 +205,9 @@ export const siteCopy = {
       title: 'Quello che ho costruito.',
       github: 'Vedi su GitHub',
       aria: 'Vedi {title} su GitHub',
+      live: 'Vedi sito',
+      wip: 'In corso',
+      ariaLive: 'Vedi sito di {title} (in corso)',
     },
     contact: {
       tag: 'Contatto',
@@ -306,6 +312,9 @@ export const siteCopy = {
       title: 'What I have built.',
       github: 'View on GitHub',
       aria: 'View {title} on GitHub',
+      live: 'View site',
+      wip: 'In progress',
+      ariaLive: 'View {title} website (in progress)',
     },
     contact: {
       tag: 'Contact',
@@ -349,6 +358,21 @@ export const projects = [
     link: 'https://github.com/daniilopezz/proyecto_sorare',
   },
   {
+    id: 'pokerpython',
+    title: 'pokerPython',
+    description: {
+      es: 'Aplicación web de poker en desarrollo. Lógica del juego implementada en Python con interfaz interactiva.',
+      it: 'Applicazione web di poker in sviluppo. Logica di gioco implementata in Python con interfaccia interattiva.',
+      en: 'Poker web application in development. Game logic implemented in Python with an interactive interface.',
+    },
+    lang: 'Python',
+    bgFrom: '#e8f5e9',
+    bgTo: '#a5d6a7',
+    label: 'POKER',
+    link: 'https://github.com/daniilopezz/pokerPython',
+    liveUrl: 'https://poker-python.vercel.app/',
+  },
+  {
     id: 'proyecto',
     title: 'proyecto',
     description: {
@@ -356,7 +380,7 @@ export const projects = [
       it: 'Sistema di gestione studenti con controllo di ricevute, fatture e automazioni per rendere più rapidi i processi amministrativi.',
       en: 'Student management system with receipts, invoices and automations to streamline administrative processes.',
     },
-    lang: 'Python',
+    lang: 'PHP / HTML',
     bgFrom: '#edf9ee',
     bgTo: '#c8edc9',
     label: 'ADMIN',

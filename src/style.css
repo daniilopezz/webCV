@@ -1408,6 +1408,25 @@ section[id] {
   height: 15px;
 }
 
+.project-card__link--live {
+  color: var(--color-muted-stone);
+  gap: var(--spacing-8);
+}
+
+.project-card__link-wip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  background: var(--color-light-linen);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted-stone);
+}
+
 /* ============================================================
    Contact
    ============================================================ */
