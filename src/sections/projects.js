@@ -7,8 +7,8 @@ export function initProjects(lang = 'es') {
   const copy = siteCopy[lang]?.projects || siteCopy.es.projects
   const arrowSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`
 
-  grid.innerHTML = projects.map(p => {
-    const inner = `
+  grid.innerHTML = projects.map(p => `
+    <article class="project-card">
       <div
         class="project-card__image"
         style="background: linear-gradient(135deg, ${p.bgFrom} 0%, ${p.bgTo} 100%)"
@@ -45,11 +45,8 @@ export function initProjects(lang = 'es') {
           <span class="project-card__link-wip">${copy.wip}</span>
         </a>` : ''}
       </div>
-    `
-    return p.liveUrl
-      ? `<div class="project-card">${inner}</div>`
-      : `<a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-card" aria-label="${copy.aria.replace('{title}', p.title)}">${inner}</a>`
-  }).join('')
+    </article>
+  `).join('')
 }
 
 export function initSocials() {

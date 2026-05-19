@@ -331,7 +331,7 @@ export const siteCopy = {
 export const projects = [
   {
     id: 'datascience',
-    title: 'DataScience',
+    title: 'Data Science ML',
     description: {
       es: 'Análisis de comportamiento con Machine Learning para detección de patrones y predicción. Base para sistemas de detección de anomalías.',
       it: 'Analisi del comportamento con Machine Learning per rilevamento di pattern e previsione. Base per sistemi di rilevamento anomalie.',
@@ -345,7 +345,7 @@ export const projects = [
   },
   {
     id: 'sorare',
-    title: 'proyecto_sorare',
+    title: 'Sorare Price Tracker',
     description: {
       es: 'Aplicación para consultar y monitorizar precios de jugadores en la plataforma de coleccionables deportivos digitales Sorare.',
       it: 'Applicazione per consultare e monitorare prezzi di giocatori nella piattaforma di collezionabili sportivi digitali Sorare.',
@@ -359,7 +359,7 @@ export const projects = [
   },
   {
     id: 'pokerpython',
-    title: 'pokerPython',
+    title: 'Poker Python',
     description: {
       es: 'Aplicación web de poker en desarrollo. Lógica del juego implementada en Python con interfaz interactiva.',
       it: 'Applicazione web di poker in sviluppo. Logica di gioco implementata in Python con interfaccia interattiva.',
@@ -374,7 +374,7 @@ export const projects = [
   },
   {
     id: 'proyecto',
-    title: 'proyecto',
+    title: 'Gestor de alumnos',
     description: {
       es: 'Sistema de gestión de alumnos con control de recibos, facturas y automatizaciones para agilizar procesos administrativos.',
       it: 'Sistema di gestione studenti con controllo di ricevute, fatture e automazioni per rendere più rapidi i processi amministrativi.',
