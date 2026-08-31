@@ -3,7 +3,7 @@ import { certifications, languages, siteCopy } from './data/content.js'
 
 const STORAGE_KEY = 'webcv-language'
 const defaultLang = 'es'
-const claudeAcademyBadgeUrl = 'https://academy.claude.com/badges/'
+const claudeAcademyVerifyUrl = 'https://academy.claude.com/verify/'
 let gsapPromise = null
 
 function getGsap() {
@@ -113,7 +113,7 @@ function renderCertifications(copy, lang) {
   grid.innerHTML = certifications.map(item => {
     const issued = item.issued[lang] || item.issued.es
     const track = item.track[lang] || item.track.es
-    const credentialUrl = item.url || `${claudeAcademyBadgeUrl}${item.credentialId}`
+    const credentialUrl = item.url || `${claudeAcademyVerifyUrl}${item.credentialId}`
 
     return `
       <article class="cert-card">
