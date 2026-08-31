@@ -53,7 +53,7 @@ export const siteCopy = {
       tag: 'Perfil',
       title: 'Motivación, web y datos.',
       intro: [
-        'Hola! Me llamo Dani, soy de Almería y actualmente vivo en Catania. Soy una persona motivada por trabajar en una empresa donde pueda aportar, aprender y dar lo máximo de mí.',
+        'Hola! Me llamo Dani, soy de Almería y mantengo un gran vínculo con Catania (Italia). Soy una persona motivada por trabajar en una empresa donde pueda aportar, aprender y dar lo máximo de mí.',
         'Siempre me ha gustado la informática, por eso la convertí en mi camino de estudios. Mientras estudiaba, también realizaba páginas web para mí y para mi familia, combinando práctica real con aprendizaje constante.',
         'Fuera de la informática, uno de mis grandes hobbies es el fútbol. Además, ejerzo como árbitro en la RFAF, una experiencia que me ha ayudado a trabajar la concentración, la comunicación y la toma de decisiones.'
       ],
@@ -69,7 +69,7 @@ export const siteCopy = {
         },
         {
           title: 'Máster de Formación Profesional en Desarrollo de Aplicaciones Python',
-          meta: 'Higher Level Access',
+          meta: 'Master FP',
           detail: 'Especializacion orientada a desarollo de aplicaciones con Python, automatizacion y trabajo con datos.',
         },
       ],
@@ -160,7 +160,7 @@ export const siteCopy = {
       tag: 'Profilo',
       title: 'Motivazione, web e dati.',
       intro: [
-        'Ciao! Mi chiamo Dani, sono di Almería e attualmente vivo a Catania. Sono una persona motivata a lavorare in un’azienda dove poter contribuire, imparare e dare il massimo.',
+        'Ciao! Mi chiamo Dani, sono di Almería e ho un forte legame con Catania (Italia). Sono una persona motivata a lavorare in un’azienda dove poter contribuire, imparare e dare il massimo.',
         'L’informatica mi è sempre piaciuta, per questo l’ho scelta come percorso di studio. Durante gli studi realizzavo anche pagine web per me e per la mia famiglia, unendo pratica reale e apprendimento costante.',
         'Fuori dall’informatica, uno dei miei hobby principali è il calcio. Inoltre sono arbitro nella RFAF, un’esperienza che mi ha aiutato a migliorare concentrazione, comunicazione e capacità decisionale.'
       ],
@@ -176,7 +176,7 @@ export const siteCopy = {
         },
         {
           title: 'Master di Formazione Professionale in Sviluppo di Applicazioni Python',
-          meta: 'Higher Level Access',
+          meta: 'Master FP',
           detail: 'Specializzazione orientata allo sviluppo di applicazioni con Python, automazione e lavoro con i dati.',
         },
       ],
@@ -267,7 +267,7 @@ export const siteCopy = {
       tag: 'Profile',
       title: 'Motivation, web and data.',
       intro: [
-        'Hi! My name is Dani, I am from Almería and I currently live in Catania. I am highly motivated to work in a company where I can contribute, keep learning and give my best.',
+        'Hi! My name is Dani, I am from Almería and I have a strong connection with Catania (Italy). I am highly motivated to work in a company where I can contribute, keep learning and give my best.',
         'I have always liked computing, so I chose it as my study path. While studying, I also built websites for myself and my family, combining real practice with constant learning.',
         'Outside tech, one of my main hobbies is football. I also work as a referee in the RFAF, an experience that has helped me improve focus, communication and decision-making.'
       ],
@@ -283,7 +283,7 @@ export const siteCopy = {
         },
         {
           title: 'Vocational Training Master in Python Application Development',
-          meta: 'Higher Level Access',
+          meta: 'Master FP',
           detail: 'Specialization focused on application development with Python, automation and working with data.',
         },
       ],
