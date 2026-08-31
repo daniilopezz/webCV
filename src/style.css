@@ -2052,6 +2052,10 @@ body.cv-modal-open {
     border-bottom-color: var(--color-mid-tone-beige);
   }
 
+  .mobile-menu-open .header {
+    z-index: 270;
+  }
+
   .hero {
     min-height: auto;
     align-items: flex-start;

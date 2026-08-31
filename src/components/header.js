@@ -15,6 +15,7 @@ export function initHeader() {
     const isOpen = mobileNav.classList.contains('open')
     burger.classList.toggle('active', !isOpen)
     mobileNav.classList.toggle('open', !isOpen)
+    document.body.classList.toggle('mobile-menu-open', !isOpen)
     burger.setAttribute('aria-expanded', String(!isOpen))
     mobileNav.setAttribute('aria-hidden', String(isOpen))
   })
@@ -24,6 +25,7 @@ export function initHeader() {
     el.addEventListener('click', () => {
       burger.classList.remove('active')
       mobileNav.classList.remove('open')
+      document.body.classList.remove('mobile-menu-open')
       burger.setAttribute('aria-expanded', 'false')
       mobileNav.setAttribute('aria-hidden', 'true')
     })
