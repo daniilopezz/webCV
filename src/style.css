@@ -305,6 +305,7 @@ section[id] {
   padding: var(--spacing-4) 0;
   border-radius: var(--radius-buttons);
   position: relative;
+  white-space: nowrap;
   transition: opacity 0.2s;
 }
 
@@ -429,6 +430,7 @@ section[id] {
   color: var(--color-deep-mocha);
   padding: var(--spacing-10) 0;
   border-bottom: 1px solid var(--color-mid-tone-beige);
+  white-space: nowrap;
   transition: color 0.2s;
 }
 

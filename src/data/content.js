@@ -105,7 +105,7 @@ export const siteCopy = {
       languages: [
         { name: 'Español', level: 'Nativo', value: 100 },
         { name: 'Inglés', level: 'B1', value: 58 },
-        { name: 'Italiano', level: 'B2', value: 76 },
+        { name: 'Italiano', level: 'C1', value: 88 },
       ],
     },
     projects: {
@@ -227,7 +227,7 @@ export const siteCopy = {
       languages: [
         { name: 'Spagnolo', level: 'Madrelingua', value: 100 },
         { name: 'Inglese', level: 'B1', value: 58 },
-        { name: 'Italiano', level: 'B2', value: 76 },
+        { name: 'Italiano', level: 'C1', value: 88 },
       ],
     },
     projects: {
@@ -349,7 +349,7 @@ export const siteCopy = {
       languages: [
         { name: 'Spanish', level: 'Native', value: 100 },
         { name: 'English', level: 'B1', value: 58 },
-        { name: 'Italian', level: 'B2', value: 76 },
+        { name: 'Italian', level: 'C1', value: 88 },
       ],
     },
     projects: {
