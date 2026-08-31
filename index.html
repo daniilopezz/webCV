@@ -37,6 +37,14 @@
         <button class="language-switcher__btn" type="button" data-lang="en" aria-label="English" aria-pressed="false">🇬🇧</button>
       </div>
 
+      <button class="btn btn--download header__download" type="button" data-cv-trigger data-i18n-aria-label="cvDownload.aria" aria-haspopup="dialog" aria-controls="cv-download-modal" aria-expanded="false">
+        <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"/>
+        </svg>
+        <span data-i18n="cvDownload.button">Descargar CV</span>
+      </button>
+
       <a href="#contact" class="btn btn--primary header__cta" data-i18n="nav.cta">Hablemos</a>
 
       <button class="header__burger" aria-label="Abrir menú" aria-expanded="false" data-i18n-aria-label="nav.menu">
@@ -55,6 +63,13 @@
         <button class="language-switcher__btn" type="button" data-lang="it" aria-label="Italiano" aria-pressed="false">🇮🇹</button>
         <button class="language-switcher__btn" type="button" data-lang="en" aria-label="English" aria-pressed="false">🇬🇧</button>
       </div>
+      <button class="btn btn--download mobile-nav__download" type="button" data-cv-trigger data-i18n-aria-label="cvDownload.aria" aria-haspopup="dialog" aria-controls="cv-download-modal" aria-expanded="false">
+        <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"/>
+        </svg>
+        <span data-i18n="cvDownload.button">Descargar CV</span>
+      </button>
       <a href="mailto:lopezaguirrecoc@gmail.com" class="btn btn--primary mobile-nav__cta" data-i18n="nav.cta">Hablemos</a>
     </div>
   </header>
@@ -81,6 +96,13 @@
           <div class="hero__actions">
             <a href="#projects" class="btn btn--primary" data-i18n="hero.primary">Ver proyectos</a>
             <a href="#contact" class="btn btn--ghost" data-i18n="hero.secondary">Contactar</a>
+            <button class="btn btn--download hero__download" type="button" data-cv-trigger data-i18n-aria-label="cvDownload.aria" aria-haspopup="dialog" aria-controls="cv-download-modal" aria-expanded="false">
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"/>
+              </svg>
+              <span data-i18n="cvDownload.button">Descargar CV</span>
+            </button>
           </div>
         </div>
       </div>
@@ -317,6 +339,65 @@
       </div>
     </div>
   </footer>
+
+  <div class="cv-modal" id="cv-download-modal" data-cv-modal aria-hidden="true">
+    <div class="cv-modal__overlay" data-cv-close></div>
+    <section class="cv-modal__panel" role="dialog" aria-modal="true" aria-labelledby="cv-download-title" aria-describedby="cv-download-lead">
+      <button class="cv-modal__close" type="button" data-cv-close data-i18n-aria-label="cvDownload.close">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <span class="accent-tag cv-modal__tag" data-i18n="cvDownload.eyebrow">Currículum</span>
+      <h2 class="cv-modal__title" id="cv-download-title" data-i18n="cvDownload.title">Descargar CV</h2>
+      <p class="cv-modal__lead" id="cv-download-lead" data-i18n="cvDownload.lead">Daniel Lopez Aguirre · PDF</p>
+
+      <div class="cv-modal__options">
+        <a class="cv-option" href="./daniel_lopez_aguirre_curriculum.pdf" download="daniel_lopez_aguirre_curriculum.pdf" data-cv-download>
+          <span class="cv-option__badge">ES</span>
+          <span class="cv-option__copy">
+            <strong data-i18n="cvDownload.spanish">Versión en español</strong>
+            <small data-i18n="cvDownload.spanishMeta">Currículum completo</small>
+          </span>
+          <span class="cv-option__action">
+            <span data-i18n="cvDownload.action">Descargar</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17 17 7m0 0H9m8 0v8" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+
+        <a class="cv-option" href="./daniel_lopez_aguirre_cv_english.pdf" download="daniel_lopez_aguirre_cv_english.pdf" data-cv-download>
+          <span class="cv-option__badge">EN</span>
+          <span class="cv-option__copy">
+            <strong data-i18n="cvDownload.english">Versión en inglés</strong>
+            <small data-i18n="cvDownload.englishMeta">CV internacional</small>
+          </span>
+          <span class="cv-option__action">
+            <span data-i18n="cvDownload.action">Descargar</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17 17 7m0 0H9m8 0v8" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+
+        <a class="cv-option" href="./daniel_lopez_aguirre_cv_italiano.pdf" download="daniel_lopez_aguirre_cv_italiano.pdf" data-cv-download>
+          <span class="cv-option__badge">IT</span>
+          <span class="cv-option__copy">
+            <strong data-i18n="cvDownload.italian">Versión en italiano</strong>
+            <small data-i18n="cvDownload.italianMeta">CV in italiano</small>
+          </span>
+          <span class="cv-option__action">
+            <span data-i18n="cvDownload.action">Descargar</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17 17 7m0 0H9m8 0v8" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </section>
+  </div>
 
   <script type="module" src="./src/main.js"></script>
 </body>

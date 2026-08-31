@@ -1,9 +1,14 @@
-import gsap from 'gsap'
 import { initProjects } from './sections/projects.js'
 import { languages, siteCopy } from './data/content.js'
 
 const STORAGE_KEY = 'webcv-language'
 const defaultLang = 'es'
+let gsapPromise = null
+
+function getGsap() {
+  gsapPromise ||= import('gsap').then(module => module.default)
+  return gsapPromise
+}
 
 function getStoredLanguage() {
   const saved = localStorage.getItem(STORAGE_KEY)
@@ -105,9 +110,11 @@ function renderLanguageState(lang) {
   })
 }
 
-function animateLanguageChange() {
+async function animateLanguageChange() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (prefersReduced) return
+
+  const gsap = await getGsap()
 
   gsap.fromTo(
     [
@@ -145,7 +152,9 @@ export function applyLanguage(lang, options = {}) {
   localStorage.setItem(STORAGE_KEY, nextLang)
   window.refreshRpgPanel?.()
 
-  if (options.animate) animateLanguageChange()
+  if (options.animate) {
+    animateLanguageChange().catch(() => {})
+  }
 }
 
 export function initI18n() {

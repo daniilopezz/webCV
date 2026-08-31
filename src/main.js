@@ -2,43 +2,106 @@ import './style.css'
 
 import { injectSpeedInsights } from '@vercel/speed-insights'
 import { initHeader }          from './components/header.js'
-import { initCookieConsent }   from './components/cookie-consent.js'
+import { initCvDownload }      from './components/cv-download.js'
 import { initSplineEasterEgg } from './components/spline-egg.js'
 import { initSocials }         from './sections/projects.js'
-import { initRpgPanel }        from './sections/about.js'
 import { initI18n }            from './i18n.js'
-import { initLenis }           from './animations/lenis.js'
-import { initHeroAnimations, initScrollAnimations } from './animations/gsap.js'
-import { HeroCharacter }       from './three/hero-character.js'
-import { ContactScene }        from './three/contact-scene.js'
 
-document.addEventListener('DOMContentLoaded', () => {
-  injectSpeedInsights()
+let hasBooted = false
 
-  // UI
-  initHeader()
-  initCookieConsent()
-  initSplineEasterEgg()
-  initSocials()
-  initI18n()
+function revealHeroFallback() {
+  document.querySelectorAll([
+    '.hero-tag',
+    '.hero__title-line > span',
+    '.hero__description',
+    '.hero__actions',
+    '.hero__canvas',
+  ].join(',')).forEach(element => {
+    element.style.opacity = '1'
+    element.style.transform = 'none'
+  })
+}
 
-  // RPG about panel
-  initRpgPanel()
+async function initMotion() {
+  const [
+    { initLenis },
+    { initHeroAnimations, initScrollAnimations },
+  ] = await Promise.all([
+    import('./animations/lenis.js'),
+    import('./animations/gsap.js'),
+  ])
 
-  // Smooth scroll + GSAP
   initLenis()
   initHeroAnimations()
   initScrollAnimations()
+}
 
-  // Three.js character — responsive across desktop, tablet, and phone
+async function initCookieLayer() {
+  const { initCookieConsent } = await import('./components/cookie-consent.js')
+  initCookieConsent()
+}
+
+async function initAboutPanel() {
+  const { initRpgPanel } = await import('./sections/about.js')
+  initRpgPanel()
+}
+
+function canUseWebGl() {
+  try {
+    const canvas = document.createElement('canvas')
+    return Boolean(
+      canvas.getContext('webgl2') ||
+      canvas.getContext('webgl') ||
+      canvas.getContext('experimental-webgl')
+    )
+  } catch {
+    return false
+  }
+}
+
+async function initScenes() {
+  if (!canUseWebGl()) return
+
+  const [
+    { HeroCharacter },
+    { ContactScene },
+  ] = await Promise.all([
+    import('./three/hero-character.js'),
+    import('./three/contact-scene.js'),
+  ])
+
   const heroCanvas = document.getElementById('hero-canvas')
   if (heroCanvas) {
     new HeroCharacter(heroCanvas)
   }
 
-  // Contact globe — all devices (lighter scene)
   const contactCanvas = document.getElementById('contact-canvas')
   if (contactCanvas) {
     new ContactScene(contactCanvas)
   }
-})
+}
+
+function bootApp() {
+  if (hasBooted) return
+  hasBooted = true
+
+  injectSpeedInsights()
+
+  // UI
+  initHeader()
+  initCvDownload()
+  initSplineEasterEgg()
+  initSocials()
+  initI18n()
+
+  initCookieLayer().catch(() => {})
+  initAboutPanel().catch(() => {})
+  initMotion().catch(revealHeroFallback)
+  initScenes().catch(() => {})
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootApp, { once: true })
+} else {
+  bootApp()
+}

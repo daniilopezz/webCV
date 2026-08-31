@@ -1,6 +1,8 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
+
 // Typewriter effect for RPG stat values
 function typeText(el, text, delay = 0) {
   el.textContent = ''

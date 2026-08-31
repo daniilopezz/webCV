@@ -20,7 +20,7 @@ export function initHeader() {
   })
 
   // Close mobile nav when a link is clicked
-  mobileNav?.querySelectorAll('.mobile-nav__link, .mobile-nav__cta, .language-switcher__btn').forEach(el => {
+  mobileNav?.querySelectorAll('.mobile-nav__link, .mobile-nav__cta, .language-switcher__btn, [data-cv-trigger]').forEach(el => {
     el.addEventListener('click', () => {
       burger.classList.remove('active')
       mobileNav.classList.remove('open')
