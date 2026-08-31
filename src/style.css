@@ -2057,9 +2057,10 @@ body.cv-modal-open {
   }
 
   .mobile-menu-open .cookie-consent__banner {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(12px);
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(12px) !important;
   }
 
   .hero {
