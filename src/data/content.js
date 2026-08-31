@@ -412,14 +412,11 @@ export const siteCopy = {
   },
 }
 
-const linkedInCertificationsUrl = 'https://www.linkedin.com/in/dani-lopez-46677a382/details/certifications/'
-
 export const certifications = [
   {
     title: 'Claude Academy: Deploying Claude Enterprise with Confidence: The five decisions that shape your rollout',
     issuer: 'Anthropic',
     credentialId: '60d848cfe6a94e36ac15c8706e5177b6',
-    url: linkedInCertificationsUrl,
     issued: { es: 'Sept. 2026', it: 'Set. 2026', en: 'Sep. 2026' },
     track: { es: 'Enterprise', it: 'Enterprise', en: 'Enterprise' },
   },
@@ -427,7 +424,6 @@ export const certifications = [
     title: 'Claude Academy: Building with the Claude API',
     issuer: 'Anthropic',
     credentialId: '33cc0d96bfd73cdab652dc90f05040be',
-    url: linkedInCertificationsUrl,
     issued: { es: 'Ago. 2026', it: 'Ago. 2026', en: 'Aug. 2026' },
     track: { es: 'API', it: 'API', en: 'API' },
   },
@@ -435,7 +431,6 @@ export const certifications = [
     title: 'Claude Academy: AI Fluency for Builders',
     issuer: 'Anthropic',
     credentialId: '1831cc631436d3a30fb3bcc183ddb595',
-    url: linkedInCertificationsUrl,
     issued: { es: 'Sept. 2026', it: 'Set. 2026', en: 'Sep. 2026' },
     track: { es: 'AI Fluency', it: 'AI Fluency', en: 'AI Fluency' },
   },
@@ -443,7 +438,6 @@ export const certifications = [
     title: 'Claude Academy: Teaching AI Fluency',
     issuer: 'Anthropic',
     credentialId: '0abcc6dabc474c3b4fed7ae42e9d604e',
-    url: linkedInCertificationsUrl,
     issued: { es: 'Sept. 2026', it: 'Set. 2026', en: 'Sep. 2026' },
     track: { es: 'AI Fluency', it: 'AI Fluency', en: 'AI Fluency' },
   },
@@ -451,7 +445,6 @@ export const certifications = [
     title: 'Claude Academy: AI Capabilities and Limitations',
     issuer: 'Anthropic',
     credentialId: '2c3b1979844800fde77f07bbb51d8814',
-    url: linkedInCertificationsUrl,
     issued: { es: 'Sept. 2026', it: 'Set. 2026', en: 'Sep. 2026' },
     track: { es: 'AI Fluency', it: 'AI Fluency', en: 'AI Fluency' },
   },
@@ -459,7 +452,6 @@ export const certifications = [
     title: 'Claude Academy: AI Fluency: Framework & Foundations',
     issuer: 'Anthropic',
     credentialId: '52335e2e8db090c78faed0e55580961b',
-    url: linkedInCertificationsUrl,
     issued: { es: 'Sept. 2026', it: 'Set. 2026', en: 'Sep. 2026' },
     track: { es: 'AI Fluency', it: 'AI Fluency', en: 'AI Fluency' },
   },
@@ -467,7 +459,6 @@ export const certifications = [
     title: 'Claude Academy: Claude Code in Action',
     issuer: 'Anthropic',
     credentialId: '05d01534026201c38130e0878365f19b',
-    url: linkedInCertificationsUrl,
     issued: { es: 'Sept. 2026', it: 'Set. 2026', en: 'Sep. 2026' },
     track: { es: 'Claude Code', it: 'Claude Code', en: 'Claude Code' },
   },
@@ -475,7 +466,6 @@ export const certifications = [
     title: 'Claude Academy: Claude Code 101',
     issuer: 'Anthropic',
     credentialId: '1d8e84f39adfb232b024386fe421c731',
-    url: linkedInCertificationsUrl,
     issued: { es: 'Sept. 2026', it: 'Set. 2026', en: 'Sep. 2026' },
     track: { es: 'Claude Code', it: 'Claude Code', en: 'Claude Code' },
   },
