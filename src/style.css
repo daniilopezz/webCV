@@ -2056,6 +2056,12 @@ body.cv-modal-open {
     z-index: 270;
   }
 
+  .mobile-menu-open .cookie-consent__banner {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+  }
+
   .hero {
     min-height: auto;
     align-items: flex-start;
