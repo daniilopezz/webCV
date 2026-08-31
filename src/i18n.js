@@ -1,5 +1,5 @@
 import { initProjects } from './sections/projects.js'
-import { languages, siteCopy } from './data/content.js'
+import { certifications, languages, siteCopy } from './data/content.js'
 
 const STORAGE_KEY = 'webcv-language'
 const defaultLang = 'es'
@@ -102,6 +102,49 @@ function renderAboutDetails(copy) {
   }
 }
 
+function renderCertifications(copy, lang) {
+  const certificateCopy = copy.certifications
+  const grid = document.getElementById('certifications-grid')
+
+  if (!grid || !certificateCopy) return
+
+  grid.setAttribute('aria-label', certificateCopy.listLabel)
+  grid.innerHTML = certifications.map(item => {
+    const issued = item.issued[lang] || item.issued.es
+    const track = item.track[lang] || item.track.es
+
+    return `
+      <article class="cert-card">
+        <div class="cert-card__top">
+          <span class="cert-card__mark" aria-hidden="true">A</span>
+          <div class="cert-card__meta">
+            <span>${certificateCopy.issuerLabel}: ${item.issuer}</span>
+            <span>${certificateCopy.issuedLabel}: ${issued}</span>
+          </div>
+        </div>
+
+        <div class="cert-card__body">
+          <span class="cert-card__track">${track}</span>
+          <h3 class="cert-card__title">${item.title}</h3>
+        </div>
+
+        <div class="cert-card__footer">
+          <p class="cert-card__id">
+            <span>${certificateCopy.credentialLabel}</span>
+            <code>${item.credentialId}</code>
+          </p>
+          <a class="cert-card__link" href="${item.url}" target="_blank" rel="noopener noreferrer" aria-label="${certificateCopy.action}: ${item.title}">
+            <span>${certificateCopy.action}</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17 17 7m0 0H9m8 0v8" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+    `
+  }).join('')
+}
+
 function renderLanguageState(lang) {
   document.querySelectorAll('[data-lang]').forEach(button => {
     const active = button.dataset.lang === lang
@@ -121,6 +164,8 @@ async function animateLanguageChange() {
       '.hero__text',
       '.about-profile',
       '.credential-card',
+      '.certifications-header',
+      '.cert-card',
       '.project-card',
       '.contact__content',
     ],
@@ -146,6 +191,7 @@ export function applyLanguage(lang, options = {}) {
   updatePlainText(copy)
   updateRpgData(copy)
   renderAboutDetails(copy)
+  renderCertifications(copy, nextLang)
   initProjects(nextLang)
   renderLanguageState(nextLang)
 

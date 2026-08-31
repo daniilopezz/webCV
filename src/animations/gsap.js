@@ -123,6 +123,38 @@ export function initScrollAnimations() {
     }
   }
 
+  /* ── Certifications ── */
+  if (document.querySelector('.certifications-header')) {
+    gsap.fromTo(['.certifications-header', '.certifications__summary'],
+      { y: 42, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.78,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.certifications', start: 'top 82%', once: true },
+      }
+    )
+  }
+
+  const certCards = gsap.utils.toArray('.cert-card')
+  if (certCards.length) {
+    gsap.set(certCards, { y: 46, opacity: 0 })
+    ScrollTrigger.batch(certCards, {
+      start: 'top 88%',
+      once: true,
+      onEnter: batch => gsap.to(batch, {
+        y: 0,
+        opacity: 1,
+        duration: 0.64,
+        stagger: 0.07,
+        ease: 'power3.out',
+        overwrite: true,
+      }),
+    })
+  }
+
   /* ── Projects ── */
   if (document.querySelector('.projects-header')) {
     gsap.fromTo('.projects-header',
