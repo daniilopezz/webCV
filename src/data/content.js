@@ -68,9 +68,9 @@ export const siteCopy = {
           detail: 'Base sólida en desarrollo frontend, backend, bases de datos y creación de aplicaciones web completas.',
         },
         {
-          title: 'Curso de Especialización en Desarrollo de Aplicaciones Python',
+          title: 'Máster de Formación Profesional en Desarrollo de Aplicaciones Python',
           meta: 'Higher Level Access',
-          detail: 'Especialización orientada a desarrollo de aplicaciones con Python, automatización y trabajo con datos.',
+          detail: 'Especializacion orientada a desarollo de aplicaciones con Python, automatizacion y trabajo con datos.',
         },
       ],
       experience: [
@@ -175,9 +175,9 @@ export const siteCopy = {
           detail: 'Base solida in frontend, backend, database e sviluppo di applicazioni web complete.',
         },
         {
-          title: 'Specialization Course in Python Application Development',
+          title: 'Master di Formazione Professionale in Sviluppo di Applicazioni Python',
           meta: 'Higher Level Access',
-          detail: 'Specializzazione orientata allo sviluppo di applicazioni Python, automazione e lavoro con i dati.',
+          detail: 'Specializzazione orientata allo sviluppo di applicazioni con Python, automazione e lavoro con i dati.',
         },
       ],
       experience: [
@@ -282,9 +282,9 @@ export const siteCopy = {
           detail: 'Strong foundation in frontend, backend, databases and complete web application development.',
         },
         {
-          title: 'Specialization Course in Python Application Development',
+          title: 'Vocational Training Master in Python Application Development',
           meta: 'Higher Level Access',
-          detail: 'Specialization focused on Python application development, automation and data workflows.',
+          detail: 'Specialization focused on application development with Python, automation and working with data.',
         },
       ],
       experience: [
