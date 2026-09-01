@@ -120,10 +120,6 @@ export const siteCopy = {
     },
     certifications: {
       tag: 'Certificados',
-      title: 'Cursos y certificados.',
-      description: 'Formación reciente en Claude Academy sobre API, Claude Code, fluidez con IA y despliegue empresarial.',
-      statNumber: '8',
-      statLabel: 'certificados de Anthropic',
       issuerLabel: 'Entidad',
       issuedLabel: 'Expedición',
       credentialLabel: 'ID de credencial',
@@ -255,10 +251,6 @@ export const siteCopy = {
     },
     certifications: {
       tag: 'Certificati',
-      title: 'Corsi e certificati.',
-      description: 'Formazione recente su Claude Academy dedicata ad API, Claude Code, AI fluency e deployment enterprise.',
-      statNumber: '8',
-      statLabel: 'certificati Anthropic',
       issuerLabel: 'Ente',
       issuedLabel: 'Rilascio',
       credentialLabel: 'ID credenziale',
@@ -390,10 +382,6 @@ export const siteCopy = {
     },
     certifications: {
       tag: 'Certificates',
-      title: 'Courses and certificates.',
-      description: 'Recent Claude Academy training covering the API, Claude Code, AI fluency and enterprise rollout.',
-      statNumber: '8',
-      statLabel: 'Anthropic certificates',
       issuerLabel: 'Issuer',
       issuedLabel: 'Issued',
       credentialLabel: 'Credential ID',

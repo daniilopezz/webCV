@@ -125,13 +125,12 @@ export function initScrollAnimations() {
 
   /* ── Certifications ── */
   if (document.querySelector('.certifications-header')) {
-    gsap.fromTo(['.certifications-header', '.certifications__summary'],
+    gsap.fromTo('.certifications-header',
       { y: 42, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 0.78,
-        stagger: 0.08,
         ease: 'power3.out',
         scrollTrigger: { trigger: '.certifications', start: 'top 82%', once: true },
       }

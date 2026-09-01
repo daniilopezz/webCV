@@ -44,9 +44,6 @@ class LocaleCopy:
     role: str
     location: str
     page_tag: str
-    title: str
-    description: str
-    stat_label: str
     issuer_label: str
     issued_label: str
     credential_label: str
@@ -112,12 +109,6 @@ COPIES = [
         role="Desarrollador web · Científico de datos",
         location="Almería, España",
         page_tag="Certificados",
-        title="Cursos y certificados",
-        description=(
-            "Formación reciente en Claude Academy sobre API, Claude Code, fluidez con IA "
-            "y despliegue empresarial. Cada credencial enlaza a su verificación pública."
-        ),
-        stat_label="certificados verificados de Anthropic",
         issuer_label="Entidad",
         issued_label="Expedición",
         credential_label="ID de credencial",
@@ -129,12 +120,6 @@ COPIES = [
         role="Web Developer · Data Scientist",
         location="Almería, Spain",
         page_tag="Certificates",
-        title="Courses and certificates",
-        description=(
-            "Recent Claude Academy training covering the API, Claude Code, AI fluency "
-            "and enterprise rollout. Each credential links to its public verification."
-        ),
-        stat_label="verified Anthropic certificates",
         issuer_label="Issuer",
         issued_label="Issued",
         credential_label="Credential ID",
@@ -146,12 +131,6 @@ COPIES = [
         role="Sviluppatore web · Data Scientist",
         location="Almería, Spagna",
         page_tag="Certificati",
-        title="Corsi e certificati",
-        description=(
-            "Formazione recente su Claude Academy dedicata ad API, Claude Code, AI fluency "
-            "e deployment enterprise. Ogni credenziale rimanda alla verifica pubblica."
-        ),
-        stat_label="certificati Anthropic verificati",
         issuer_label="Ente",
         issued_label="Rilascio",
         credential_label="ID credenziale",
@@ -327,25 +306,6 @@ def section_header(c: canvas.Canvas, title: str, x: float, y: float, w: float) -
     return y - 18
 
 
-def draw_stat(c: canvas.Canvas, copy: LocaleCopy, x: float, y: float):
-    rounded(c, x, y - 41, 154, 41, CARD, CARD_BORDER, radius=7)
-    c.setFillColor(ACCENT)
-    c.setFont("Helvetica-Bold", 24)
-    c.drawString(x + 13, y - 29, "8")
-    draw_wrapped(
-        c,
-        copy.stat_label,
-        x + 47,
-        y - 18,
-        88,
-        font="Helvetica-Bold",
-        size=7.2,
-        leading=8,
-        color=TEXT,
-        max_lines=2,
-    )
-
-
 def draw_cert_card(c: canvas.Canvas, cert: dict[str, str], copy: LocaleCopy, x: float, y: float, w: float, h: float):
     rounded(c, x, y - h, w, h, CARD, CARD_BORDER, radius=6)
     c.setFillColor(ACCENT)
@@ -415,20 +375,13 @@ def build_certificates_page(copy: LocaleCopy, profile_image: Path) -> Path:
     x = 44
     y = HEIGHT - 178
     content_w = WIDTH - 88
-    y = section_header(c, copy.page_tag, x, y, content_w)
-
-    c.setFont("Helvetica-Bold", 23)
-    c.setFillColor(TEXT)
-    c.drawString(x, y, copy.title)
-    y -= 28
-    draw_wrapped(c, copy.description, x, y, 345, font="Helvetica", size=8.6, leading=11, color=MUTED, max_lines=3)
-    draw_stat(c, copy, WIDTH - 198, y + 6)
+    section_header(c, copy.page_tag, x, y, content_w)
 
     card_w = 245
     card_h = 108
     gap_x = 17
     gap_y = 11
-    start_y = HEIGHT - 292
+    start_y = HEIGHT - 220
     for index, cert in enumerate(CERTIFICATES):
         col = index % 2
         row = index // 2
