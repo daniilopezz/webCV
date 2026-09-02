@@ -3,8 +3,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
 // Typewriter effect for RPG stat values
 function typeText(el, text, delay = 0) {
+  if (prefersReducedMotion()) {
+    el.textContent = text
+    el.classList.add('typed')
+    return
+  }
+
   el.textContent = ''
   el.classList.remove('typed')
   const chars = text.split('')
@@ -34,6 +44,17 @@ export function initRpgPanel() {
     rows.forEach((el, i) => {
       typeText(el, el.dataset.type || '', i * 90)
     })
+
+    skillsPanel.querySelectorAll('.rpg__skill').forEach(skill => {
+      const fill = skill.querySelector('.rpg__bar-fill')
+      if (fill) fill.style.width = `${parseInt(skill.dataset.fill, 10) || 0}%`
+    })
+  }
+
+  if (prefersReducedMotion()) {
+    gsap.set([infoPanel, skillsPanel, '.rpg__quote'], { opacity: 1, x: 0, y: 0 })
+    window.refreshRpgPanel()
+    return
   }
 
   ScrollTrigger.create({
@@ -74,9 +95,8 @@ export function initRpgPanel() {
     // Skill bars fill after panels appear
     const skills = skillsPanel.querySelectorAll('.rpg__skill')
     skills.forEach((skill, i) => {
-      const value   = parseInt(skill.dataset.value, 10)
-      const fill    = skill.querySelector('.rpg__bar-fill')
-      const numEl   = skill.querySelector('.rpg__skill-num')
+      const value = parseInt(skill.dataset.fill, 10) || 0
+      const fill = skill.querySelector('.rpg__bar-fill')
 
       tl.fromTo(fill,
         { width: '0%' },
@@ -84,12 +104,6 @@ export function initRpgPanel() {
           width: `${value}%`,
           duration: 0.7,
           ease: 'power2.out',
-          onUpdate() {
-            if (numEl) {
-              const current = Math.round(value * this.progress())
-              numEl.textContent = current
-            }
-          },
         },
         0.8 + i * 0.12
       )

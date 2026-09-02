@@ -14,6 +14,8 @@ function revealHeroFallback() {
     '.hero-tag',
     '.hero__title-line > span',
     '.hero__description',
+    '.hero__stack',
+    '.hero__meta',
     '.hero__actions',
     '.hero__canvas',
   ].join(',')).forEach(element => {

@@ -51,17 +51,17 @@ const makeScreenTexture = () =>
 
     ctx.font = '700 19px "Roboto Mono", monospace'
     ctx.fillStyle = '#8edfff'
-    ctx.fillText('daniel@webcv:~/ai-data', 90, 23)
+    ctx.fillText('dani@webcv:~/projects', 90, 23)
 
     const lines = [
-      ['$', 'python train_pipeline.py --source projects.json'],
-      ['>', 'loading pandas, sklearn, postgresql...'],
-      ['>', 'clean rows: 12,482 | features: 37'],
-      ['>', 'fit RandomForestClassifier(n_estimators=240)'],
-      ['>', 'accuracy: 0.91 | f1_score: 0.88'],
-      ['$', 'uvicorn app.main:api --reload'],
-      ['INFO', 'terminal streaming code...'],
-      ['API', 'POST /predict 200  24ms'],
+      ['$', 'npm run build -- webcv'],
+      ['>', 'vite portfolio | i18n: es / en / it'],
+      ['$', 'python data_tools.py --sql'],
+      ['>', 'loading pandas, csv, postgresql...'],
+      ['>', 'clean data -> project notes'],
+      ['$', 'git status --short'],
+      ['INFO', 'stack: web / python / sql / data'],
+      ['API', 'portfolio links verified'],
     ]
 
     ctx.font = '700 20px "Roboto Mono", monospace'
@@ -212,7 +212,7 @@ export class HeroCharacter {
     const isNarrow = width < 390
     const mobile = {
       Python:     { x: -0.22, y: 3.02, z: 0.12, s: isNarrow ? 0.29 : 0.31 },
-      ML:         { x: 1.16,  y: 2.70, z: 0.05, s: isNarrow ? 0.25 : 0.27 },
+      SQL:        { x: 1.16,  y: 2.70, z: 0.05, s: isNarrow ? 0.25 : 0.27 },
       DATA:       { x: 1.05,  y: 3.17, z: -0.10, s: isNarrow ? 0.28 : 0.30 },
       PostgreSQL: { x: -0.02, y: 2.34, z: -0.18, s: isNarrow ? 0.28 : 0.30 },
       Docker:     { x: 0.60,  y: 3.34, z: 0.25, s: isNarrow ? 0.25 : 0.27 },
@@ -544,7 +544,7 @@ export class HeroCharacter {
 
     const badges = [
       { label: 'Python',     x:  0.12, y: 3.02, z: 0.15, s: 0.40, accent: '#34bfff', phase: 0.0 },
-      { label: 'ML',         x:  1.78, y: 2.72, z: 0.08, s: 0.34, accent: '#ff8400', phase: 1.0 },
+      { label: 'SQL',        x:  1.78, y: 2.72, z: 0.08, s: 0.34, accent: '#ff8400', phase: 1.0 },
       { label: 'DATA',       x:  2.18, y: 3.10, z:-0.12, s: 0.38, accent: '#34bfff', phase: 2.0 },
       { label: 'PostgreSQL', x:  0.10, y: 2.30, z:-0.18, s: 0.38, accent: '#34bfff', phase: 3.0 },
       { label: 'Docker',     x:  1.05, y: 3.24, z: 0.30, s: 0.34, accent: '#34bfff', phase: 5.0 },

@@ -11,6 +11,8 @@ export function initHeroAnimations() {
       '.hero-tag',
       '.hero__title-line > span',
       '.hero__description',
+      '.hero__stack',
+      '.hero__meta',
       '.hero__actions',
       '.hero__canvas',
     ], { opacity: 1, y: 0, scale: 1, clearProps: 'transform' })
@@ -47,10 +49,16 @@ export function initHeroAnimations() {
         1.0
       )
 
+      tl.fromTo(['.hero__stack', '.hero__meta'],
+        { y: 18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.65, stagger: 0.08 },
+        1.12
+      )
+
       tl.fromTo('.hero__actions',
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.7 },
-        1.2
+        1.32
       )
 
       tl.fromTo('.hero__canvas',
@@ -72,6 +80,28 @@ export function initHeroAnimations() {
 
 export function initScrollAnimations() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  if (prefersReduced) {
+    gsap.set([
+      '.about-profile__header',
+      '.about-profile__intro',
+      '.credential-card',
+      '.certifications-header',
+      '.cert-card',
+      '.projects-header',
+      '.project-card',
+      '.contact-tag',
+      '.contact__title',
+      '.contact__description',
+      '.contact-cta',
+      '.contact__socials',
+    ], { opacity: 1, y: 0, clearProps: 'transform' })
+
+    document.querySelectorAll('.language-meter__fill').forEach(fill => {
+      fill.style.width = getComputedStyle(fill.parentElement.parentElement).getPropertyValue('--language-level').trim()
+    })
+    return
+  }
 
   /* ── Profile details ── */
   if (document.querySelector('.about-profile')) {

@@ -1,7 +1,9 @@
 import gsap from 'gsap'
+import { siteCopy } from '../data/content.js'
 
 const CONSENT_KEY = 'cookieConsent'
 const PREFERENCES_KEY = 'cookiePreferences'
+const LANGUAGE_KEY = 'webcv-language'
 
 const DEFAULT_PREFERENCES = {
   necessary: true,
@@ -16,6 +18,16 @@ const ALL_PREFERENCES = {
 }
 
 let analyticsInjected = false
+
+function getCookieCopy(lang) {
+  let currentLang = lang
+
+  if (!currentLang && canUseStorage()) {
+    currentLang = localStorage.getItem(LANGUAGE_KEY)
+  }
+
+  return siteCopy[currentLang]?.cookieConsent || siteCopy.es.cookieConsent
+}
 
 function canUseStorage() {
   try {
@@ -143,28 +155,28 @@ function getFocusable(container) {
   )).filter(el => !el.disabled && el.offsetParent !== null)
 }
 
-function buildMarkup() {
+function buildMarkup(copy = getCookieCopy()) {
   const root = document.createElement('div')
   root.className = 'cookie-consent'
   root.innerHTML = `
-    <section class="cookie-consent__banner" role="region" aria-label="Aviso de cookies">
+    <section class="cookie-consent__banner" role="region" aria-label="${copy.bannerLabel}">
       <div class="cookie-consent__mark" aria-hidden="true">DL</div>
       <div class="cookie-consent__body">
-        <p class="cookie-consent__eyebrow">Privacidad</p>
-        <h2 class="cookie-consent__title">Cookies para una experiencia mejor.</h2>
+        <p class="cookie-consent__eyebrow" data-cookie-copy="privacy">${copy.privacy}</p>
+        <h2 class="cookie-consent__title" data-cookie-copy="title">${copy.title}</h2>
         <p class="cookie-consent__text">
-          Uso cookies necesarias para que la web funcione y, si me das permiso, cookies analíticas para medir visitas y mejorar el portfolio.
+          <span data-cookie-copy="text">${copy.text}</span>
         </p>
       </div>
-      <div class="cookie-consent__actions" aria-label="Opciones de cookies">
+      <div class="cookie-consent__actions" aria-label="${copy.actionsLabel}">
         <button class="cookie-consent__btn cookie-consent__btn--primary" type="button" data-cookie-action="accept">
-          Aceptar todas
+          <span data-cookie-copy="accept">${copy.accept}</span>
         </button>
         <button class="cookie-consent__btn cookie-consent__btn--ghost" type="button" data-cookie-action="reject">
-          Rechazar
+          <span data-cookie-copy="reject">${copy.reject}</span>
         </button>
         <button class="cookie-consent__btn cookie-consent__btn--text" type="button" data-cookie-action="settings">
-          Configurar
+          <span data-cookie-copy="settings">${copy.settings}</span>
         </button>
       </div>
     </section>
@@ -178,60 +190,60 @@ function buildMarkup() {
         aria-labelledby="cookie-modal-title"
         aria-describedby="cookie-modal-description"
       >
-        <button class="cookie-modal__close" type="button" data-cookie-action="close-settings" aria-label="Cerrar configuración de cookies">
+        <button class="cookie-modal__close" type="button" data-cookie-action="close-settings" aria-label="${copy.close}">
           <span aria-hidden="true">×</span>
         </button>
 
-        <p class="cookie-consent__eyebrow">Centro de preferencias</p>
-        <h2 class="cookie-modal__title" id="cookie-modal-title" tabindex="-1">Configurar cookies</h2>
+        <p class="cookie-consent__eyebrow" data-cookie-copy="preferences">${copy.preferences}</p>
+        <h2 class="cookie-modal__title" id="cookie-modal-title" tabindex="-1" data-cookie-copy="modalTitle">${copy.modalTitle}</h2>
         <p class="cookie-modal__description" id="cookie-modal-description">
-          Elige qué categorías quieres permitir. Las cookies necesarias se mantienen activas porque son imprescindibles para el funcionamiento básico de la web.
+          <span data-cookie-copy="modalDescription">${copy.modalDescription}</span>
         </p>
 
         <div class="cookie-modal__options">
           <article class="cookie-option">
             <div>
-              <h3 class="cookie-option__title">Necesarias</h3>
-              <p class="cookie-option__text">Siempre activas. Ayudan a recordar tu decisión y mantener funciones básicas.</p>
+              <h3 class="cookie-option__title" data-cookie-copy="necessaryTitle">${copy.necessaryTitle}</h3>
+              <p class="cookie-option__text" data-cookie-copy="necessaryText">${copy.necessaryText}</p>
             </div>
-            <span class="cookie-option__status" aria-label="Cookies necesarias siempre activas">Siempre activas</span>
+            <span class="cookie-option__status" aria-label="${copy.necessaryStatusAria}" data-cookie-copy="necessaryStatus">${copy.necessaryStatus}</span>
           </article>
 
           <article class="cookie-option">
             <div>
-              <h3 class="cookie-option__title">Analíticas</h3>
-              <p class="cookie-option__text">Me permiten medir visitas y entender qué secciones funcionan mejor.</p>
+              <h3 class="cookie-option__title" data-cookie-copy="analyticsTitle">${copy.analyticsTitle}</h3>
+              <p class="cookie-option__text" data-cookie-copy="analyticsText">${copy.analyticsText}</p>
             </div>
             <label class="cookie-toggle">
               <input type="checkbox" name="analytics">
               <span class="cookie-toggle__track" aria-hidden="true">
                 <span class="cookie-toggle__thumb"></span>
               </span>
-              <span class="sr-only">Activar cookies analíticas</span>
+              <span class="sr-only" data-cookie-copy="analyticsSr">${copy.analyticsSr}</span>
             </label>
           </article>
 
           <article class="cookie-option">
             <div>
-              <h3 class="cookie-option__title">Marketing</h3>
-              <p class="cookie-option__text">Preparadas para futuras integraciones de contenido o campañas personalizadas.</p>
+              <h3 class="cookie-option__title" data-cookie-copy="marketingTitle">${copy.marketingTitle}</h3>
+              <p class="cookie-option__text" data-cookie-copy="marketingText">${copy.marketingText}</p>
             </div>
             <label class="cookie-toggle">
               <input type="checkbox" name="marketing">
               <span class="cookie-toggle__track" aria-hidden="true">
                 <span class="cookie-toggle__thumb"></span>
               </span>
-              <span class="sr-only">Activar cookies de marketing</span>
+              <span class="sr-only" data-cookie-copy="marketingSr">${copy.marketingSr}</span>
             </label>
           </article>
         </div>
 
         <div class="cookie-modal__actions">
           <button class="cookie-consent__btn cookie-consent__btn--ghost" type="button" data-cookie-action="save-settings">
-            Guardar configuración
+            <span data-cookie-copy="save">${copy.save}</span>
           </button>
           <button class="cookie-consent__btn cookie-consent__btn--primary" type="button" data-cookie-action="accept-settings">
-            Aceptar todas
+            <span data-cookie-copy="accept">${copy.accept}</span>
           </button>
         </div>
       </section>
@@ -239,6 +251,18 @@ function buildMarkup() {
   `
 
   return root
+}
+
+function updateCookieCopy(root, copy) {
+  root.querySelector('.cookie-consent__banner')?.setAttribute('aria-label', copy.bannerLabel)
+  root.querySelector('.cookie-consent__actions')?.setAttribute('aria-label', copy.actionsLabel)
+  root.querySelector('.cookie-modal__close')?.setAttribute('aria-label', copy.close)
+  root.querySelector('.cookie-option__status')?.setAttribute('aria-label', copy.necessaryStatusAria)
+
+  root.querySelectorAll('[data-cookie-copy]').forEach(element => {
+    const value = copy[element.dataset.cookieCopy]
+    if (value) element.textContent = value
+  })
 }
 
 export function initCookieConsent() {
@@ -261,6 +285,13 @@ export function initCookieConsent() {
   const marketingInput = root.querySelector('input[name="marketing"]')
   let previousFocus = null
 
+  const onLanguageChange = event => {
+    const copy = event.detail?.copy?.cookieConsent || getCookieCopy(event.detail?.lang)
+    updateCookieCopy(root, copy)
+  }
+
+  window.addEventListener('webcv:language-change', onLanguageChange)
+
   gsap.set(banner, { autoAlpha: 0, y: 36, scale: 0.985 })
   gsap.set(modal, { autoAlpha: 0, display: 'none' })
   gsap.set(modalPanel, { y: 32, scale: 0.985 })
@@ -269,6 +300,7 @@ export function initCookieConsent() {
 
   const closeRoot = () => {
     animateOut(banner, () => {
+      window.removeEventListener('webcv:language-change', onLanguageChange)
       root.remove()
     })
   }

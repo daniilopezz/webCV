@@ -1,4 +1,15 @@
-// Easter egg: clic 3 veces en el logo DL.
+import { siteCopy } from '../data/content.js'
+
+const LANGUAGE_KEY = 'webcv-language'
+
+function getEggCopy() {
+  try {
+    const lang = localStorage.getItem(LANGUAGE_KEY)
+    return siteCopy[lang]?.easterEgg || siteCopy.es.easterEgg
+  } catch {
+    return siteCopy.es.easterEgg
+  }
+}
 
 export function initSplineEasterEgg() {
   const logo = document.querySelector('.header__logo')
@@ -23,14 +34,15 @@ export function initSplineEasterEgg() {
 
   function openEgg() {
     if (overlay) return
+    const copy = getEggCopy()
 
     overlay = document.createElement('div')
     overlay.className = 'spline-egg-overlay'
     overlay.innerHTML = `
-      <div class="spline-egg-panel" role="dialog" aria-modal="true" aria-label="DL Lab desbloqueado">
+      <div class="spline-egg-panel" role="dialog" aria-modal="true" aria-label="${copy.dialogLabel}">
         <div class="spline-egg-header">
-          <span class="spline-egg-title">// DL LAB UNLOCKED</span>
-          <button class="spline-egg-close" aria-label="Cerrar">✕</button>
+          <span class="spline-egg-title">${copy.title}</span>
+          <button class="spline-egg-close" aria-label="${copy.close}">✕</button>
         </div>
         <div class="spline-egg-stage" aria-hidden="true">
           <div class="spline-egg-grid"></div>
@@ -40,12 +52,12 @@ export function initSplineEasterEgg() {
             <span class="spline-egg-logo">DL</span>
           </div>
           <div class="spline-egg-terminal">
-            <span>STATUS: ONLINE</span>
-            <span>STACK: WEB / PYTHON / DATA</span>
-            <span>LOCATION: CATANIA</span>
+            <span>${copy.status}</span>
+            <span>${copy.stack}</span>
+            <span>${copy.location}</span>
           </div>
         </div>
-        <p class="spline-egg-hint">Easter egg desbloqueado - clic fuera para cerrar</p>
+        <p class="spline-egg-hint">${copy.hint}</p>
       </div>
     `
     document.body.appendChild(overlay)

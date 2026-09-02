@@ -50,7 +50,7 @@ function updateRpgData(copy) {
 function renderAboutDetails(copy) {
   const about = copy.about
   const intro = document.getElementById('about-intro')
-  const traits = document.getElementById('about-traits')
+  const skillGroups = document.getElementById('about-skills')
   const education = document.getElementById('education-list')
   const experience = document.getElementById('experience-list')
   const languagesList = document.getElementById('languages-list')
@@ -61,9 +61,14 @@ function renderAboutDetails(copy) {
     `).join('')
   }
 
-  if (traits) {
-    traits.innerHTML = about.traits.map(trait => `
-      <span class="skill-tag">${trait}</span>
+  if (skillGroups) {
+    skillGroups.innerHTML = about.skillGroups.map(group => `
+      <article class="about-profile__skill-group">
+        <h3 class="about-profile__skill-title">${group.title}</h3>
+        <div class="about-profile__skill-tags">
+          ${group.items.map(item => `<span class="skill-tag">${item}</span>`).join('')}
+        </div>
+      </article>
     `).join('')
   }
 
@@ -72,7 +77,7 @@ function renderAboutDetails(copy) {
       <article class="credential-item">
         <span class="credential-item__meta">${item.meta}</span>
         <h4 class="credential-item__title">${item.title}</h4>
-        <p class="credential-item__detail">${item.detail}</p>
+        ${renderDetails(item.details)}
       </article>
     `).join('')
   }
@@ -80,10 +85,10 @@ function renderAboutDetails(copy) {
   if (experience) {
     experience.innerHTML = about.experience.map(item => `
       <article class="credential-item">
-        <span class="credential-item__meta">${item.date}</span>
+        ${item.date ? `<span class="credential-item__meta">${item.date}</span>` : ''}
         <h4 class="credential-item__title">${item.title}</h4>
         <p class="credential-item__company">${item.company}</p>
-        <p class="credential-item__detail">${item.detail}</p>
+        ${renderDetails(item.details)}
       </article>
     `).join('')
   }
@@ -101,6 +106,16 @@ function renderAboutDetails(copy) {
       </div>
     `).join('')
   }
+}
+
+function renderDetails(details = []) {
+  if (!details.length) return ''
+
+  return `
+    <ul class="credential-item__details">
+      ${details.map(detail => `<li>${detail}</li>`).join('')}
+    </ul>
+  `
 }
 
 function renderCertifications(copy, lang) {
@@ -165,6 +180,7 @@ async function animateLanguageChange() {
     [
       '.hero__text',
       '.about-profile',
+      '.about-profile__skill-group',
       '.credential-card',
       '.certifications-header',
       '.cert-card',
@@ -189,6 +205,7 @@ export function applyLanguage(lang, options = {}) {
   document.querySelector('meta[name="description"]')?.setAttribute('content', copy.meta.description)
   document.querySelector('meta[property="og:title"]')?.setAttribute('content', copy.meta.title)
   document.querySelector('meta[property="og:description"]')?.setAttribute('content', copy.meta.description)
+  document.querySelector('meta[property="og:locale"]')?.setAttribute('content', copy.meta.ogLocale)
 
   updatePlainText(copy)
   updateRpgData(copy)
@@ -203,6 +220,10 @@ export function applyLanguage(lang, options = {}) {
   if (options.animate) {
     animateLanguageChange().catch(() => {})
   }
+
+  window.dispatchEvent(new CustomEvent('webcv:language-change', {
+    detail: { lang: nextLang, copy },
+  }))
 }
 
 export function initI18n() {
